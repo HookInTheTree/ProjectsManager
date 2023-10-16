@@ -1,4 +1,4 @@
-﻿namespace ProjectsManager.Domain.Models.ProjectAggregate.ProjectValueObjects;
+﻿namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.ProjectValueObjects;
 
 public class Description:ValueObject
 {

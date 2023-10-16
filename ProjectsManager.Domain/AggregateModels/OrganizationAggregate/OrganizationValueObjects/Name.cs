@@ -1,4 +1,4 @@
-﻿namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.ProjectValueObjects;
+﻿namespace ProjectsManager.Domain.AggregateModels.OrganizationAggregate.OrganizationValueObjects;
 
 public class Name:ValueObject
 {
@@ -7,7 +7,7 @@ public class Name:ValueObject
     public Name(string name)
     {
         if (string.IsNullOrEmpty(name))
-            throw new ArgumentException($"Project name can't be null or whitespace!");
+            throw new ArgumentException($"Organization name can't be null or empty!");
         Value = name;
     }
 

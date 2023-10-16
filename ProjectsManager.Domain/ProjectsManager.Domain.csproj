@@ -7,9 +7,5 @@
     </PropertyGroup>
 
 
-    <ItemGroup>
-      <Folder Include="AggregateModels\EmployeeAggregate\EmployeeValueObjects\" />
-      <Folder Include="AggregateModels\TaskAggregate\TaskValueObjects\" />
-    </ItemGroup>
 
 </Project>

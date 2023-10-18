@@ -1,4 +1,4 @@
-﻿namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.TaskAggregate.TaskValueObjects;
+﻿namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.ValueObjects.Task;
 
 public class ProjectTaskStatus:Enumeration
 {

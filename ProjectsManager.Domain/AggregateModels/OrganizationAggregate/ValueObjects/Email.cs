@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace ProjectsManager.Domain.AggregateModels.OrganizationAggregate.OrganizationValueObjects;
+namespace ProjectsManager.Domain.AggregateModels.OrganizationAggregate.ValueObjects;
 
 public class Email:ValueObject
 {

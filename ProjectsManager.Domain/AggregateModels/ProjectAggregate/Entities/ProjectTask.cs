@@ -1,13 +1,11 @@
 ﻿using ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.ProjectValueObjects;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.TaskAggregate.ResourceAggregate;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.TaskAggregate.TaskValueObjects;
+using ProjectsManager.Domain.AggregateModels.ProjectAggregate.ValueObjects.Task;
 
-namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.TaskAggregate;
+namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
 
 public class ProjectTask:Entity
 {
-    public TaskValueObjects.Name Name { get; }
+    public Name Name { get; }
     public Description Description { get; private set; }
     public Duration Duration { get; private set; }
     public ProjectTaskStatus Status { get; private set; }
@@ -17,7 +15,7 @@ public class ProjectTask:Entity
     private readonly List<Resource> _resources;
     public IReadOnlyCollection<Resource> Resources => _resources;
 
-    public ProjectTask(TaskValueObjects.Name name, Description description, Duration duration)
+    public ProjectTask(Name name, Description description, Duration duration)
     {
         Name = name;
         Description = description;

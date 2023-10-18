@@ -1,5 +1,6 @@
-﻿using ProjectsManager.Domain.AggregateModels.ProjectAggregate;
-using ProjectsManager.Domain.OrganizationAggregate;
+﻿using ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
+using ProjectsManager.Domain.AggregateModels.EmployeeAggregate.ValueObjects;
+using ProjectsManager.Domain.AggregateModels.OrganizationAggregate;
 
 namespace ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
 

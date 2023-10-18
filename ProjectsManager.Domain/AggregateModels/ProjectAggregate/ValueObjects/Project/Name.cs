@@ -1,6 +1,6 @@
-﻿namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.ProjectValueObjects;
+﻿namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.ValueObjects.Project;
 
-public class Name:ValueObject
+public class Name:Domain.ValueObject
 {
     public string Value { get; }
 

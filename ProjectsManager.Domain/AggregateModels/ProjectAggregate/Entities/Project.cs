@@ -1,9 +1,8 @@
 ﻿using ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.ProjectValueObjects;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.TaskAggregate;
-using ProjectsManager.Domain.OrganizationAggregate;
+using ProjectsManager.Domain.AggregateModels.ProjectAggregate.ValueObjects.Project;
+using ProjectsManager.Domain.AggregateModels.OrganizationAggregate;
 
-namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate;
+namespace ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
 
 public class Project:Entity
 {

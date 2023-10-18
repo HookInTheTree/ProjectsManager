@@ -8,4 +8,8 @@
 
 
 
+    <ItemGroup>
+      <Folder Include="AggregateModels\ProjectAggregate\ValueObjects\Resource\" />
+    </ItemGroup>
+
 </Project>

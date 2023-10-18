@@ -1,4 +1,4 @@
-﻿namespace ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
+﻿namespace ProjectsManager.Domain.AggregateModels.EmployeeAggregate.ValueObjects;
 
 public class FullName:ValueObject
 {

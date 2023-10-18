@@ -1,5 +1,5 @@
 ﻿
-namespace ProjectsManager.Domain.AggregateModels.OrganizationAggregate.OrganizationValueObjects;
+namespace ProjectsManager.Domain.AggregateModels.OrganizationAggregate.ValueObjects;
 
 public class JuridicalAddress:ValueObject
 {

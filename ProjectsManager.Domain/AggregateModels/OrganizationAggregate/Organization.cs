@@ -1,9 +1,8 @@
 ﻿using ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
-using ProjectsManager.Domain.AggregateModels.OrganizationAggregate.OrganizationValueObjects;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate;
+using ProjectsManager.Domain.AggregateModels.OrganizationAggregate.ValueObjects;
+using ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
 
-namespace ProjectsManager.Domain.OrganizationAggregate;
-
+namespace ProjectsManager.Domain.AggregateModels.OrganizationAggregate;
 public class Organization : Entity
 {
     public Name Name { get; private set; }

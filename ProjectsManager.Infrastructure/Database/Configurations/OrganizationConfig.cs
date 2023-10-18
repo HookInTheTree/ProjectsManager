@@ -2,12 +2,15 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectsManager.Domain.AggregateModels.OrganizationAggregate;
 
-namespace ProjectsManager.Infrastructure.Database.Configurations;
-
-public class OrganizationConfig:IEntityTypeConfiguration<Organization>
+namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    public void Configure(EntityTypeBuilder<Organization> builder)
+    public class OrganizationConfig:IEntityTypeConfiguration<Organization>
     {
-        throw new NotImplementedException();
+        public void Configure(EntityTypeBuilder<Organization> builder)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }
+

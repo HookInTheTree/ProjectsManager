@@ -2,12 +2,14 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
 
-namespace ProjectsManager.Infrastructure.Database.Configurations;
-
-public class ResourceConfig:IEntityTypeConfiguration<Resource>
+namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    public void Configure(EntityTypeBuilder<Resource> builder)
+    public class ResourceConfig:IEntityTypeConfiguration<Resource>
     {
-        throw new NotImplementedException();
+        public void Configure(EntityTypeBuilder<Resource> builder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+

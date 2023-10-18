@@ -2,12 +2,14 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
 
-namespace ProjectsManager.Infrastructure.Database.Configurations;
-
-public class TaskConfig:IEntityTypeConfiguration<ProjectTask>
+namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    public void Configure(EntityTypeBuilder<ProjectTask> builder)
+    public class TaskConfig:IEntityTypeConfiguration<ProjectTask>
     {
-        throw new NotImplementedException();
+        public void Configure(EntityTypeBuilder<ProjectTask> builder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+

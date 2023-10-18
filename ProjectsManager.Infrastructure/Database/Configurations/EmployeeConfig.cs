@@ -1,13 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Extensions.Primitives;
 using ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
 
-namespace ProjectsManager.Infrastructure.Database.Configurations;
-
-public class EmployeeConfig:IEntityTypeConfiguration<Employee>
+namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    public void Configure(EntityTypeBuilder<Employee> builder)
+    public class EmployeeConfig:IEntityTypeConfiguration<Employee>
     {
-        throw new NotImplementedException();
+        public void Configure(EntityTypeBuilder<Employee> builder)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }
+

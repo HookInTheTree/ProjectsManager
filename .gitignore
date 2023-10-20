@@ -40,3 +40,7 @@
 /ProjectsManager.Infrastructure/obj/rider.project.model.nuget.info
 /ProjectsManager.Infrastructure/obj/rider.project.restore.info
 /ProjectsManager.Infrastructure/obj/Debug/net7.0/ProjectsManager.Infrastructure.csproj.AssemblyReference.cache
+/ProjectsManager.Domain/bin/Debug/net7.0
+/ProjectsManager.Domain/obj/Debug/net7.0
+/ProjectsManager.Infrastructure
+/ProjectsManager.WebApi

@@ -1,0 +1,11 @@
+D:\Repositories\ProjectsManager\ProjectsManager.Application\bin\Debug\net7.0\ProjectsManager.Application.deps.json
+D:\Repositories\ProjectsManager\ProjectsManager.Application\bin\Debug\net7.0\ProjectsManager.Application.dll
+D:\Repositories\ProjectsManager\ProjectsManager.Application\bin\Debug\net7.0\ProjectsManager.Application.pdb
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.AssemblyInfoInputs.cache
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.AssemblyInfo.cs
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.csproj.CoreCompileInputs.cache
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.dll
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\refint\ProjectsManager.Application.dll
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.pdb
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ref\ProjectsManager.Application.dll

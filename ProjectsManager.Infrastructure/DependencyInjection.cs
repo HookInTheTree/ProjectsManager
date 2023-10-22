@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectsManager.Infrastructure.Database;
 using ProjectsManager.Infrastructure.Identity;
@@ -11,8 +12,27 @@ public static class DependencyInjection
     {
         services.AddDbContext<AppDbContext>(
             opts => opts.UseSqlServer(options.ConnectionString));
-        
-        services.AddIdentity<ApplicationUser, ApplicationRole>();
+
+        services.AddIdentity<ApplicationUser, ApplicationRole>(
+        options =>
+        {
+            options.SignIn.RequireConfirmedAccount = false;
+            options.User.RequireUniqueEmail = false;
+            options.SignIn.RequireConfirmedEmail = false;
+
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequiredLength = 7;
+        })
+        .AddSignInManager<SignInManager<ApplicationUser>>()
+        .AddUserManager<UserManager<ApplicationUser>>()
+        .AddRoles<ApplicationRole>()
+        .AddRoleManager<RoleManager<ApplicationRole>>()
+        .AddEntityFrameworkStores<AppDbContext>()
+        .AddDefaultTokenProviders();
+
         return services;
     }
 }

@@ -6,10 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-
-
     <ItemGroup>
-      <Folder Include="AggregateModels\ProjectAggregate\ValueObjects\Resource\" />
+      <Compile Remove="AggregateModels\ProjectAggregate\ValueObjects\Resource\**" />
+      <EmbeddedResource Remove="AggregateModels\ProjectAggregate\ValueObjects\Resource\**" />
+      <None Remove="AggregateModels\ProjectAggregate\ValueObjects\Resource\**" />
     </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ using ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
 
 namespace ProjectsManager.Infrastructure.Database.Models;
 
-internal class EmployeeEntity
+internal class EmployeeEntity:BaseEntity
 {
     internal FullName FullName { get; set; }
     internal PassportDetails PassportInfo { get; set; }

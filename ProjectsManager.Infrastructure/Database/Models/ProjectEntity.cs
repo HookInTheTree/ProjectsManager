@@ -5,13 +5,13 @@ using ProjectsManager.Domain.AggregateModels.ProjectAggregate.ValueObjects.Proje
 
 namespace ProjectsManager.Infrastructure.Database.Models;
 
-internal class ProjectEntity
+internal class ProjectEntity: BaseEntity
 {
     internal Name Name { get; set; }
     internal Description Description { get; set; }
     internal Duration Duration { get; set; }
-    internal Guid OrganizationId { get; set; }
-    internal Organization Owner { get; set; }
-    internal ICollection<Employee> Members { get; set; }
-    internal ICollection<ProjectTask> Tasks { get; set; }
+    internal Guid OwnerId { get; set; }
+    internal OrganizationEntity Owner { get; set; }
+    internal ICollection<EmployeeEntity> Members { get; set; }
+    internal ICollection<ProjectTaskEntity> Tasks { get; set; }
 }

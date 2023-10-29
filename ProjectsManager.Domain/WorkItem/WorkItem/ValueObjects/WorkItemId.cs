@@ -2,10 +2,27 @@
 
 namespace ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
 
-public class WorkItemId:ValueObject
+public class WorkItemId:AggregateRootId<Guid>
 {
+    public override Guid Value { get; protected set; }
+
+    private WorkItemId(Guid value)
+    {
+        Value = value;
+    }
+    public static WorkItemId CreateUnique()
+    {
+        return new WorkItemId(Guid.NewGuid());
+    }
+
+    public static WorkItemId Create(Guid value)
+    {
+        return new WorkItemId(value);
+    }
+    
     protected override IEnumerable<object> GetEqualityComponents()
     {
-        throw new NotImplementedException();
+        // ReSharper disable once HeapView.BoxingAllocation
+        yield return Value;
     }
 }

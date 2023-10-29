@@ -5,7 +5,7 @@ using ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
 
 namespace ProjectsManager.Domain.WorkItemAggregate;
 
-public class WorkItem:AggregateRoot<WorkItemId>
+public class WorkItem:AggregateRoot<WorkItemId, Guid>
 {
     public Name Name { get; }
     public Description Description { get; private set; }

@@ -5,7 +5,7 @@ using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
 using Name = ProjectsManager.Domain.OrganizationAggregate.ValueObjects.Name;
 
 namespace ProjectsManager.Domain.OrganizationAggregate;
-public sealed class Organization : AggregateRoot<OrganizationId>
+public sealed class Organization : AggregateRoot<OrganizationId, Guid>
 {
     public Name Name { get; private set; }
     public JuridicalAddress JuridicalAddress { get; private set; }

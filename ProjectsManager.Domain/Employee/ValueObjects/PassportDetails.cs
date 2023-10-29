@@ -4,10 +4,10 @@ namespace ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
 
 public class PassportDetails:ValueObject
 {
-    public string Serial { get; }
-    public string Number { get; }
+    public string Serial { get;  private set;}
+    public string Number { get;  private set;}
 
-    public PassportDetails(string serial, string number)
+    protected PassportDetails(string serial, string number)
     {
         if (string.IsNullOrEmpty(serial))
             throw new ArgumentException("The serial code can't be null or empty!");
@@ -21,6 +21,11 @@ public class PassportDetails:ValueObject
 
         Serial = serial;
         Number = number;
+    }
+
+    public static PassportDetails Create(string serial, string number)
+    {
+        return new PassportDetails(serial, number);
     }
 
     protected override IEnumerable<object> GetEqualityComponents()

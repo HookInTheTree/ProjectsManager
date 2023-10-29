@@ -1,5 +1,4 @@
-﻿using ProjectsManager.Domain.ProjectAggregate.Entities;
-using ProjectsManager.Domain.ProjectAggregate.Repositories;
+﻿using ProjectsManager.Domain.WorkItemAggregate;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 

@@ -1,37 +1,75 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Extensions.Primitives;
 using ProjectsManager.Domain.EmployeeAggregate;
-using ProjectsManager.Infrastructure.Database.Models;
+using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
+using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    internal class EmployeeConfig:IEntityTypeConfiguration<EmployeeEntity>
+    public class EmployeeConfig : IEntityTypeConfiguration<Employee>
     {
-        public void Configure(EntityTypeBuilder<EmployeeEntity> builder)
+        public void Configure(EntityTypeBuilder<Employee> builder)
         {
-            builder.OwnsOne(employee => employee.FullName, subbuilder =>
-            {
-                subbuilder.Property(name => name.Name)
-                    .HasColumnName("Name");
+            ConfigureEmployeesTable(builder);
+            ConfigureEmployeesProjectsIdsTable(builder);
+            ConfigureEmployeesWorkItemIdsTable(builder);
+        }
+        private void ConfigureEmployeesTable(EntityTypeBuilder<Employee> builder)
+        {
+            builder.ToTable("Employees");
 
-                subbuilder.Property(name => name.MiddleName)
-                    .HasColumnName("MiddleName");
+            builder.HasKey(e => e.Id);
 
-                subbuilder.Property(name => name.LastName)
-                    .HasColumnName("LastName");
-            });
+            builder.Property(m => m.Id)
+                .ValueGeneratedNever()
+                .HasConversion(
+                    id => id.Value,
+                    value => EmployeeId.Create(value));
+
+            builder.OwnsOne(x => x.FullName);
+            builder.OwnsOne(x => x.PassportInfo);
             
-            builder.OwnsOne(employee => employee.PassportInfo, subbuilder =>
-            {
-                subbuilder.Property(passportDetails => passportDetails.Serial)
-                    .HasColumnName("Serial");
+            builder.Property(m => m.OrganizationId)
+                .ValueGeneratedNever()
+                .HasConversion(
+                    id => id.Value,
+                    value => OrganizationId.Create(value));
+        }
 
-                subbuilder.Property(passportDetails => passportDetails.Number)
-                    .HasColumnName("Number");
+        private void ConfigureEmployeesProjectsIdsTable(EntityTypeBuilder<Employee> builder)
+        {
+            builder.OwnsMany(x => x.ProjectIds, pb =>
+            {
+                pb.ToTable("EmployeesProjectsIds");
+
+                pb.WithOwner().HasForeignKey("EmployeeId");
+
+                pb.HasKey("Id");
+
+                pb.Property(p => p.Value)
+                    .HasColumnName("TaskId")
+                    .ValueGeneratedNever();
             });
+            builder.Metadata.FindNavigation(nameof(Employee.ProjectIds))
+                .SetPropertyAccessMode(PropertyAccessMode.Field);
+        }
+        
+        private void ConfigureEmployeesWorkItemIdsTable(EntityTypeBuilder<Employee> builder)
+        {
+            builder.OwnsMany(x => x.WorkItemIds, pb =>
+            {
+                pb.ToTable("EmployeesWorkItemIds");
+
+                pb.WithOwner().HasForeignKey("EmployeeId");
+
+                pb.HasKey("Id");
+
+                pb.Property(p => p.Value)
+                    .HasColumnName("WorkItemId")
+                    .ValueGeneratedNever();
+            });
+            builder.Metadata.FindNavigation(nameof(Employee.WorkItemIds))
+                .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
-
 }
-

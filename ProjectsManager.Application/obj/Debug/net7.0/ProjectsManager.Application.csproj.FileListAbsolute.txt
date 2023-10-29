@@ -9,3 +9,7 @@ D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\Pro
 D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\refint\ProjectsManager.Application.dll
 D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.pdb
 D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ref\ProjectsManager.Application.dll
+D:\Repositories\ProjectsManager\ProjectsManager.Application\bin\Debug\net7.0\ProjectsManager.Domain.dll
+D:\Repositories\ProjectsManager\ProjectsManager.Application\bin\Debug\net7.0\ProjectsManager.Domain.pdb
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.csproj.AssemblyReference.cache
+D:\Repositories\ProjectsManager\ProjectsManager.Application\obj\Debug\net7.0\ProjectsManager.Application.csproj.CopyComplete

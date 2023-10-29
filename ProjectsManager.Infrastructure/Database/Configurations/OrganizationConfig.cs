@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectsManager.Domain.Organization;
 using ProjectsManager.Infrastructure.Database.Models;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations

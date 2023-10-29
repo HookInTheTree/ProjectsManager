@@ -9,7 +9,7 @@ using Name = ProjectsManager.Domain.ProjectAggregate.ValueObjects.Name;
 
 namespace ProjectsManager.Domain.ProjectAggregate.Entities;
 
-public class Project:AggregateRoot<ProjectId>
+public class Project:AggregateRoot<ProjectId,Guid>
 {
     public Name Name { get; private set; }
     public Description Description { get; private set; }

@@ -1,7 +1,7 @@
-﻿using ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
-using ProjectsManager.Domain.AggregateModels.OrganizationAggregate;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.ValueObjects.Project;
+﻿using ProjectsManager.Domain.EmployeeAggregate;
+using ProjectsManager.Domain.Organization;
+using ProjectsManager.Domain.ProjectAggregate.Entities;
+using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
 
 namespace ProjectsManager.Infrastructure.Database.Models;
 
@@ -13,5 +13,5 @@ internal class ProjectEntity: BaseEntity
     internal Guid OwnerId { get; set; }
     internal OrganizationEntity Owner { get; set; }
     internal ICollection<EmployeeEntity> Members { get; set; }
-    internal ICollection<ProjectTaskEntity> Tasks { get; set; }
+    internal ICollection<WorkItemEntity> Tasks { get; set; }
 }

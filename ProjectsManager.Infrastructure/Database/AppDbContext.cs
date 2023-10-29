@@ -22,7 +22,7 @@ namespace ProjectsManager.Infrastructure.Database
         internal DbSet<ProjectEntity> Projects { get; set; }
         internal DbSet<OrganizationEntity> Organizations { get; set; }
         internal DbSet<EmployeeEntity> Employees { get; set; }
-        internal DbSet<ProjectTaskEntity> Tasks { get; set; }
+        internal DbSet<WorkItemEntity> Tasks { get; set; }
         internal DbSet<ResourceEntity> Resources { get; set; }
         internal DbSet<ResourceTypeEntity> ResourceTypes { get; set; }
     }

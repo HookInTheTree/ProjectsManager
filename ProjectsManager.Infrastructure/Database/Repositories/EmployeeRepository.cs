@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectsManager.Domain.AggregateModels.EmployeeAggregate;
+using ProjectsManager.Domain.EmployeeAggregate;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 

@@ -1,4 +1,4 @@
-﻿using ProjectsManager.Domain.AggregateModels.OrganizationAggregate;
+﻿using ProjectsManager.Domain.Organization;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 

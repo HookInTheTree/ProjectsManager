@@ -1,5 +1,5 @@
-﻿using ProjectsManager.Domain.AggregateModels.ProjectAggregate.Entities;
-using ProjectsManager.Domain.AggregateModels.ProjectAggregate.ValueObjects.Resources;
+﻿using ProjectsManager.Domain.ProjectAggregate.Entities;
+using ProjectsManager.Domain.ProjectAggregate.ValueObjects.Resources;
 
 namespace ProjectsManager.Infrastructure.Database.Models;
 

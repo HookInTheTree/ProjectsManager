@@ -10,7 +10,12 @@ public sealed class Organization : AggregateRoot<OrganizationId, Guid>
     public Name Name { get; private set; }
     public JuridicalAddress JuridicalAddress { get; private set; }
     public ContactInfo ContactInfo { get; private set; }
-    public EmployeeId Owner { get; private set; }
+    
+    //#TODO Rework logic of Owner.
+    // Organization employee can't be the owner because when we want to create organization the employees doesn't exists.
+    // So maybe organization Owner must to be just a user?
+    // public EmployeeId OwnerId { get; private set; }
+
     private readonly List<EmployeeId> _employees;
     public IReadOnlyCollection<EmployeeId> Employees => _employees;
 
@@ -20,14 +25,13 @@ public sealed class Organization : AggregateRoot<OrganizationId, Guid>
         OrganizationId id,
         Name name,
         JuridicalAddress juridicalAddress,
-        ContactInfo contactInfo,
-        EmployeeId owner
+        ContactInfo contactInfo
         ):base(id)
     {
         Name = name;
         JuridicalAddress = juridicalAddress;
         ContactInfo = contactInfo;
-        Owner = owner;
+        // OwnerId = ownerId;
         _employees = new List<EmployeeId>();
         _projects = new List<ProjectId>();
     }
@@ -54,8 +58,8 @@ public sealed class Organization : AggregateRoot<OrganizationId, Guid>
         _employees.Add(employeeId);
     }
     
-    public void SetOwner(EmployeeId owner)
-    {
-        Owner = owner;
-    }
+    // public void SetOwner(EmployeeId owner)
+    // {
+    //     OwnerId = owner;
+    // }
 }

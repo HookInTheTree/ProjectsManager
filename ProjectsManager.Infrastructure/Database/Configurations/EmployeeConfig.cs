@@ -47,7 +47,7 @@ namespace ProjectsManager.Infrastructure.Database.Configurations
                 pb.HasKey("Id");
 
                 pb.Property(p => p.Value)
-                    .HasColumnName("TaskId")
+                    .HasColumnName("ProjectId")
                     .ValueGeneratedNever();
             });
             builder.Metadata.FindNavigation(nameof(Employee.ProjectIds))

@@ -3,20 +3,25 @@ using ProjectsManager.Domain.Common;
 
 namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 
-public class JuridicalAddress:ValueObject
+public class JuridicalAddress : ValueObject
 {
-    public PostalCode PostalСode { get; private set;}
-    public PhysicalAddress PhysicalAddress{ get;private set; }
+    public PostalCode PostalСode { get; private set; }
+    public PhysicalAddress PhysicalAddress { get; private set; }
 
-    public JuridicalAddress(PostalCode postalCode, PhysicalAddress address)
+    public JuridicalAddress(string postalCode, string state, string city, string street, string building)
     {
-        PostalСode = postalCode;
-        PhysicalAddress = address;
+        PostalСode = new PostalCode(postalCode);
+        PhysicalAddress = new PhysicalAddress(state, city, street, building);
     }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return PostalСode;
         yield return PhysicalAddress;
+    }
+
+    private JuridicalAddress()
+    {
+
     }
 }

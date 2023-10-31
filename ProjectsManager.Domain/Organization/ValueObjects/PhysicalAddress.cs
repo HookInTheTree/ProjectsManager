@@ -24,4 +24,6 @@ public class PhysicalAddress:ValueObject
         yield return Street;
         yield return Building;
     }
+
+    private PhysicalAddress() { }
 }

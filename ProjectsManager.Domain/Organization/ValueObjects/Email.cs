@@ -5,7 +5,7 @@ namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 
 public class Email:ValueObject
 {
-    public string Value { get; }
+    public string Value { get; private set; }
     public Email(string email)
     {
         var regex = @"^[\w\.-]+@[\w\.-]+\.\w+$";
@@ -14,6 +14,7 @@ public class Email:ValueObject
         
         Value = email;
     }
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

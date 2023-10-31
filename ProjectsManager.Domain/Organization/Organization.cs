@@ -16,11 +16,12 @@ public sealed class Organization : AggregateRoot<OrganizationId, Guid>
     // So maybe organization Owner must to be just a user?
     // public EmployeeId OwnerId { get; private set; }
 
-    private readonly List<EmployeeId> _employees;
-    public IReadOnlyCollection<EmployeeId> Employees => _employees;
+    private readonly List<EmployeeId> _employeeIds;
+    public IReadOnlyCollection<EmployeeId> EmployeeIds => _employeeIds;
 
-    private readonly List<ProjectId> _projects;
-    public IReadOnlyCollection<ProjectId> Projects => _projects;
+    private readonly List<ProjectId> _projectIds;
+    public IReadOnlyCollection<ProjectId> ProjectIds => _projectIds;
+    
     public Organization(
         OrganizationId id,
         Name name,
@@ -32,30 +33,36 @@ public sealed class Organization : AggregateRoot<OrganizationId, Guid>
         JuridicalAddress = juridicalAddress;
         ContactInfo = contactInfo;
         // OwnerId = ownerId;
-        _employees = new List<EmployeeId>();
-        _projects = new List<ProjectId>();
+        _employeeIds = new List<EmployeeId>();
+        _projectIds = new List<ProjectId>();
     }
+
+    private Organization()
+    {
+    
+    }
+
 
     public void RemoveProject(ProjectId projectId)
     {
-        var prjToRemove = _projects.FirstOrDefault(x => x == projectId);
-        _projects.Remove(prjToRemove);
+        var prjToRemove = _projectIds.FirstOrDefault(x => x == projectId);
+        _projectIds.Remove(prjToRemove);
     }
     
     public void AddProject(ProjectId projectId)
     {
-        _projects.Add(projectId);
+        _projectIds.Add(projectId);
     }
     
     public void RemoveEmployee(EmployeeId employeeId)
     {
-        var empToRemove = _employees.FirstOrDefault(x => x == employeeId);
-        _employees.Remove(empToRemove);
+        var empToRemove = _employeeIds.FirstOrDefault(x => x == employeeId);
+        _employeeIds.Remove(empToRemove);
     }
     
     public void AddEmployee(EmployeeId employeeId)
     {
-        _employees.Add(employeeId);
+        _employeeIds.Add(employeeId);
     }
     
     // public void SetOwner(EmployeeId owner)

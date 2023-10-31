@@ -22,7 +22,6 @@ public class EmployeeId:AggregateRootId<Guid>
     
     protected override IEnumerable<object> GetEqualityComponents()
     {
-        // ReSharper disable once HeapView.BoxingAllocation
         yield return Value;
     }
 }

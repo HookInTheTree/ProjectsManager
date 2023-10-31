@@ -21,4 +21,9 @@ public class PostalCode:ValueObject
     {
         yield return Value;
     }
+
+    private PostalCode()
+    {
+
+    }
 }

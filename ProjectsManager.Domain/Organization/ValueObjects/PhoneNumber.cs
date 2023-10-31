@@ -5,7 +5,7 @@ namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 
 public class PhoneNumber:ValueObject
 {
-    public string Value { get; }
+    public string Value { get; private set; }
     
     public PhoneNumber(string phone)
     {
@@ -15,6 +15,7 @@ public class PhoneNumber:ValueObject
         
         Value = phone;
     }
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

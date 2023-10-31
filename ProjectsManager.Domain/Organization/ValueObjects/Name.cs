@@ -4,7 +4,7 @@ namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 
 public class Name:ValueObject
 {
-    public string Value { get; }
+    public string Value { get; private set;}
 
     public Name(string name)
     {
@@ -16,5 +16,10 @@ public class Name:ValueObject
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
+    }
+
+    private Name()
+    {
+
     }
 }

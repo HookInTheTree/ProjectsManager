@@ -6,6 +6,8 @@ public class Name:ValueObject
 {
     public string Value { get; }
 
+    private Name() { }
+
     public Name(string name)
     {
         if (string.IsNullOrEmpty(name))

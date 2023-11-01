@@ -151,6 +151,19 @@ namespace ProjectsManager.Infrastructure.Migrations
                     b.ToTable("Organizations", (string)null);
                 });
 
+            modelBuilder.Entity("ProjectsManager.Domain.ProjectAggregate.Entities.Project", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OwnerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects", (string)null);
+                });
+
             modelBuilder.Entity("ProjectsManager.Infrastructure.Identity.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
@@ -321,6 +334,31 @@ namespace ProjectsManager.Infrastructure.Migrations
                                 .HasForeignKey("EmployeeId");
                         });
 
+                    b.OwnsMany("ProjectsManager.Domain.WorkItemAggregate.ValueObjects.WorkItemId", "WorkItemIds", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("EmployeeId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<Guid>("Value")
+                                .HasColumnType("uniqueidentifier")
+                                .HasColumnName("WorkItemId");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("EmployeeId");
+
+                            b1.ToTable("EmployeesWorkItemIds", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("EmployeeId");
+                        });
+
                     b.OwnsOne("ProjectsManager.Domain.EmployeeAggregate.ValueObjects.FullName", "FullName", b1 =>
                         {
                             b1.Property<Guid>("EmployeeId")
@@ -362,31 +400,6 @@ namespace ProjectsManager.Infrastructure.Migrations
                             b1.HasKey("EmployeeId");
 
                             b1.ToTable("Employees");
-
-                            b1.WithOwner()
-                                .HasForeignKey("EmployeeId");
-                        });
-
-                    b.OwnsMany("ProjectsManager.Domain.WorkItemAggregate.ValueObjects.WorkItemId", "WorkItemIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
-
-                            b1.Property<Guid>("EmployeeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("uniqueidentifier")
-                                .HasColumnName("WorkItemId");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("EmployeeId");
-
-                            b1.ToTable("EmployeesWorkItemIds", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("EmployeeId");
@@ -574,6 +587,111 @@ namespace ProjectsManager.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("ProjectIds");
+                });
+
+            modelBuilder.Entity("ProjectsManager.Domain.ProjectAggregate.Entities.Project", b =>
+                {
+                    b.OwnsMany("ProjectsManager.Domain.EmployeeAggregate.ValueObjects.EmployeeId", "MemberIds", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("ProjectId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<Guid>("Value")
+                                .HasColumnType("uniqueidentifier")
+                                .HasColumnName("EmployeeId");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("ProjectId");
+
+                            b1.ToTable("ProjectMembersIds", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProjectId");
+                        });
+
+                    b.OwnsMany("ProjectsManager.Domain.WorkItemAggregate.ValueObjects.WorkItemId", "WorkItemIds", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("ProjectId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<Guid>("Value")
+                                .HasColumnType("uniqueidentifier")
+                                .HasColumnName("WorkItemId");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("ProjectId");
+
+                            b1.ToTable("ProjectWorkItemsIds", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProjectId");
+                        });
+
+                    b.OwnsOne("ProjectsManager.Domain.ProjectAggregate.ValueObjects.Description", "Description", b1 =>
+                        {
+                            b1.Property<Guid>("ProjectId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.HasKey("ProjectId");
+
+                            b1.ToTable("Projects");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProjectId");
+                        });
+
+                    b.OwnsOne("ProjectsManager.Domain.ProjectAggregate.ValueObjects.Duration", "Duration", b1 =>
+                        {
+                            b1.Property<Guid>("ProjectId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.HasKey("ProjectId");
+
+                            b1.ToTable("Projects");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProjectId");
+                        });
+
+                    b.OwnsOne("ProjectsManager.Domain.ProjectAggregate.ValueObjects.Name", "Name", b1 =>
+                        {
+                            b1.Property<Guid>("ProjectId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.HasKey("ProjectId");
+
+                            b1.ToTable("Projects");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProjectId");
+                        });
+
+                    b.Navigation("Description")
+                        .IsRequired();
+
+                    b.Navigation("Duration")
+                        .IsRequired();
+
+                    b.Navigation("MemberIds");
+
+                    b.Navigation("Name")
+                        .IsRequired();
+
+                    b.Navigation("WorkItemIds");
                 });
 #pragma warning restore 612, 618
         }

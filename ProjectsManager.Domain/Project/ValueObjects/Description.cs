@@ -6,6 +6,8 @@ public class Description:ValueObject
 {
     public string Value { get; }
 
+    private Description() { }
+
     public Description(string description)
     {
         if (string.IsNullOrEmpty(description))

@@ -100,7 +100,7 @@ public class WorkItem:AggregateRoot<WorkItemId, Guid>
     }
     public void SetOwner(Employee employee)
     {
-        if (!Project.Members.Any(x => x.Equals(employee)))
+        if (!Project.MemberIds.Any(x => x.Equals(employee)))
         {
             throw new ArgumentException(
                 $"The employee with Id - {employee.Id} is not working on the project (Id: {Project.Id}! He cannot process the task (Id:{Id}!");

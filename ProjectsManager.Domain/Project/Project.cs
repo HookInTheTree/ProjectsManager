@@ -9,14 +9,14 @@ using Name = ProjectsManager.Domain.ProjectAggregate.ValueObjects.Name;
 
 namespace ProjectsManager.Domain.ProjectAggregate.Entities;
 
-public class Project:AggregateRoot<ProjectId,Guid>
+public sealed class Project:AggregateRoot<ProjectId,Guid>
 {
     public Name Name { get; private set; }
     public Description Description { get; private set; }
     public Duration Duration { get; private set; }
     public OrganizationId OwnerId { get; private set; }
     private readonly List<EmployeeId> _memberIds;
-    public IReadOnlyCollection<EmployeeId> Members => _memberIds;
+    public IReadOnlyCollection<EmployeeId> MemberIds => _memberIds;
     private readonly List<WorkItemId> _workItemIds;
     public IReadOnlyCollection<WorkItemId> WorkItemIds => _workItemIds;
 
@@ -58,7 +58,7 @@ public class Project:AggregateRoot<ProjectId,Guid>
 
     public void RemoveMember(EmployeeId employeeId)
     {
-        var membToRemove = Members.FirstOrDefault(x => x == employeeId);
+        var membToRemove = MemberIds.FirstOrDefault(x => x == employeeId);
         _memberIds.Remove(membToRemove);
     }
 
@@ -70,6 +70,11 @@ public class Project:AggregateRoot<ProjectId,Guid>
     public void RemoveTask(WorkItemId itemId)
     {
         _workItemIds.Remove(itemId);
+    }
+
+    private Project()
+    {
+
     }
    
 }

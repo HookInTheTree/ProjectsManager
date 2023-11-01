@@ -5,6 +5,8 @@ public class Duration: ValueObject
     public DateTime Start { get; }
     public DateTime End { get; }
 
+    private Duration() { }
+
     public Duration(DateTime start, DateTime end)
     {
         if (start == DateTime.MinValue || start == DateTime.MaxValue)

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.EmployeeAggregate;
 using ProjectsManager.Domain.OrganizationAggregate;
+using ProjectsManager.Domain.ProjectAggregate.Entities;
 using ProjectsManager.Infrastructure.Database.Configurations;
 using ProjectsManager.Infrastructure.Database.Models;
 using ProjectsManager.Infrastructure.Identity;
@@ -21,10 +22,11 @@ namespace ProjectsManager.Infrastructure.Database
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new EmployeeConfig());
             builder.ApplyConfiguration(new OrganizationConfig());
+            builder.ApplyConfiguration(new ProjectConfig());
             // builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         //
-        // internal DbSet<ProjectEntity> Projects { get; set; }
+        internal DbSet<Project> Projects { get; set; }
         internal DbSet<Organization> Organizations { get; set; }
         internal DbSet<Employee> Employees { get; set; }
         // internal DbSet<WorkItemEntity> Tasks { get; set; }

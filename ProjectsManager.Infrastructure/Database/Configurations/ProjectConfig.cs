@@ -1,35 +1,81 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProjectsManager.Domain.EmployeeAggregate;
+using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
+using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 using ProjectsManager.Domain.ProjectAggregate.Entities;
+using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
 using ProjectsManager.Infrastructure.Database.Models;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    internal class ProjectConfig:IEntityTypeConfiguration<ProjectEntity>
+    internal class ProjectConfig:IEntityTypeConfiguration<Project>
     {
-        public void Configure(EntityTypeBuilder<ProjectEntity> builder)
+        public void Configure(EntityTypeBuilder<Project> builder)
         {
-            builder.OwnsOne(project => project.Name, subbuilder =>
-            {
-                subbuilder.Property(name => name.Value)
-                    .HasColumnName("Name");
-            });
-            
-            builder.OwnsOne(project => project.Description, subbuilder =>
-            {
-                subbuilder.Property(description => description.Value)
-                    .HasColumnName("Description");
-            });
-            
-            builder.OwnsOne(project => project.Duration, subbuilder =>
-            {
-                subbuilder.Property(duration => duration.Start)
-                    .HasColumnName("Start");
-
-                subbuilder.Property(duration => duration.End)
-                    .HasColumnName("End");
-            });
+            ConfigureProjectTable(builder);
+            ConfigureProjectMemberIds(builder);
+            ConfigureProjectWorkItemsIds(builder);
         }
+
+        private void ConfigureProjectTable(EntityTypeBuilder<Project> builder)
+        {
+            builder.ToTable("Projects");
+
+            builder.HasKey(project => project.Id);
+
+            builder.Property(project => project.Id)
+                .HasConversion(id => id.Value, value => ProjectId.Create(value))
+                .ValueGeneratedNever();
+
+            builder.Property(project => project.OwnerId)
+                .HasConversion(id => id.Value, value => OrganizationId.Create(value))
+                .ValueGeneratedNever();
+
+            builder.OwnsOne(project => project.Name);
+
+            builder.OwnsOne(project => project.Description);
+
+            builder.OwnsOne(project => project.Duration);
+        }
+
+        private void ConfigureProjectWorkItemsIds(EntityTypeBuilder<Project> builder)
+        {
+            builder.OwnsMany(x => x.WorkItemIds, pb =>
+            {
+                pb.ToTable("ProjectWorkItemsIds");
+
+                pb.WithOwner().HasForeignKey("ProjectId");
+
+                pb.HasKey("Id");
+
+                pb.Property(p => p.Value)
+                    .HasColumnName("WorkItemId")
+                    .ValueGeneratedNever();
+            });
+            builder.Metadata.FindNavigation(nameof(Project.WorkItemIds))
+                .SetPropertyAccessMode(PropertyAccessMode.Field);
+        }
+
+        private void ConfigureProjectMemberIds(EntityTypeBuilder<Project> builder)
+        {
+            builder.OwnsMany(x => x.MemberIds, pb =>
+            {
+                pb.ToTable("ProjectMembersIds");
+
+                pb.WithOwner().HasForeignKey("ProjectId");
+
+                pb.HasKey("Id");
+
+                pb.Property(p => p.Value)
+                    .HasColumnName("EmployeeId")
+                    .ValueGeneratedNever();
+            });
+            builder.Metadata.FindNavigation(nameof(Project.MemberIds))
+                .SetPropertyAccessMode(PropertyAccessMode.Field);
+        }
+
+        
     }
 }
 

@@ -1,33 +1,34 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectsManager.Infrastructure.Database.Models;
+using ProjectsManager.Domain.WorkItem;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    internal class WorkItemConfig : IEntityTypeConfiguration<WorkItemEntity>
+    internal class WorkItemConfig : IEntityTypeConfiguration<WorkItem>
     {
-        public void Configure(EntityTypeBuilder<WorkItemEntity> builder)
+        public void Configure(EntityTypeBuilder<WorkItem> builder)
         {
-            builder.OwnsOne(task => task.Name, subbuilder =>
-            {
-                subbuilder.Property(name => name.Value)
-                    .HasColumnName("Name");
-            });
+            ConfigureWorkItemsTable(builder);
+            ConfigureResourcesTable(builder);
+            ConfigureResourcesTypesTable(builder);
+            
+        }
 
-            builder.OwnsOne(task => task.Description, subbuilder =>
-            {
-                subbuilder.Property(description => description.Value)
-                    .HasColumnName("Description");
-            });
+        private void ConfigureWorkItemsTable(EntityTypeBuilder<WorkItem> builder)
+        {
+            builder.OwnsOne(task => task.Name);
+            builder.OwnsOne(task => task.Description);
+            builder.OwnsOne(task => task.Duration);
+        }
 
-            builder.OwnsOne(task => task.Duration, subbuilder =>
-            {
-                subbuilder.Property(duration => duration.Start)
-                    .HasColumnName("Start");
+        private void ConfigureResourcesTypesTable(EntityTypeBuilder<WorkItem> builder)
+        {
+            throw new NotImplementedException();
+        }
 
-                subbuilder.Property(duration => duration.End)
-                    .HasColumnName("End");
-            });
+        private void ConfigureResourcesTable(EntityTypeBuilder<WorkItem> builder)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using ProjectsManager.Domain.WorkItemAggregate;
+﻿using ProjectsManager.Domain.Resource;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 

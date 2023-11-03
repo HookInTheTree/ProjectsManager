@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectsManager.Domain.EmployeeAggregate;
 using ProjectsManager.Domain.OrganizationAggregate;
 using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
-using ProjectsManager.Infrastructure.Database.Models;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {

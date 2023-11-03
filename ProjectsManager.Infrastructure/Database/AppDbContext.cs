@@ -5,7 +5,6 @@ using ProjectsManager.Domain.EmployeeAggregate;
 using ProjectsManager.Domain.OrganizationAggregate;
 using ProjectsManager.Domain.ProjectAggregate.Entities;
 using ProjectsManager.Infrastructure.Database.Configurations;
-using ProjectsManager.Infrastructure.Database.Models;
 using ProjectsManager.Infrastructure.Identity;
 
 namespace ProjectsManager.Infrastructure.Database

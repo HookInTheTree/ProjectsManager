@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectsManager.Infrastructure.Database.Models;
+using ProjectsManager.Domain.Resource;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    internal class ResourceConfig : IEntityTypeConfiguration<ResourceEntity>
+    internal class ResourceConfig : IEntityTypeConfiguration<Resource>
     {
-        public void Configure(EntityTypeBuilder<ResourceEntity> builder)
+        public void Configure(EntityTypeBuilder<Resource> builder)
         {
             builder.OwnsOne(resource => resource.Name, subbuilder =>
             {
@@ -18,18 +18,6 @@ namespace ProjectsManager.Infrastructure.Database.Configurations
             {
                 subbuilder.Property(description => description.Value)
                     .HasColumnName("Description");
-            });
-
-            builder.OwnsOne(resource => resource.Cost, subbuilder =>
-            {
-                subbuilder.Property(cost => cost.Value)
-                    .HasColumnName("Cost");
-            });
-
-            builder.OwnsOne(resource => resource.Quantity, subbuilder =>
-            {
-                subbuilder.Property(quantity => quantity.Value)
-                    .HasColumnName("Quantity");
             });
 
         }

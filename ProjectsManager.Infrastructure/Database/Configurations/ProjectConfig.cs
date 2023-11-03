@@ -5,7 +5,6 @@ using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
 using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 using ProjectsManager.Domain.ProjectAggregate.Entities;
 using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using ProjectsManager.Infrastructure.Database.Models;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {

@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectsManager.Infrastructure.Database.Models;
+using ProjectsManager.Domain.ResourceType;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {
-    internal class ResourceTypeConfig:IEntityTypeConfiguration<ResourceTypeEntity>
+    internal class ResourceTypeConfig:IEntityTypeConfiguration<ResourceType>
     {
-        public void Configure(EntityTypeBuilder<ResourceTypeEntity> builder)
+        public void Configure(EntityTypeBuilder<ResourceType> builder)
         {
             builder.OwnsOne(type => type.Name, subbuilder =>
             {

@@ -1,8 +1,8 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
+namespace ProjectsManager.Domain.WorkItem.ValueObjects;
 
-public class ProjectTaskStatus:Enumeration
+public class ProjectTaskStatus : Enumeration
 {
     public static ProjectTaskStatus Draft = new(1, nameof(Draft));
     public static ProjectTaskStatus Activated = new(1, nameof(Activated));

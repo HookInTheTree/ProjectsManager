@@ -1,8 +1,8 @@
 ﻿using ProjectsManager.Domain.Common;
+using ProjectsManager.Domain.Common.ValueObjects;
 using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
 using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using Name = ProjectsManager.Domain.OrganizationAggregate.ValueObjects.Name;
 
 namespace ProjectsManager.Domain.OrganizationAggregate;
 public sealed class Organization : AggregateRoot<OrganizationId, Guid>

@@ -1,6 +1,6 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.WorkItemAggregate.Resources.ValueObjects
+namespace ProjectsManager.Domain.WorkItem.ValueObjects
 {
     public class Quantity : ValueObject
     {
@@ -11,7 +11,7 @@ namespace ProjectsManager.Domain.WorkItemAggregate.Resources.ValueObjects
             {
                 throw new ArgumentException("Quantity value can't be less or equal 0!");
             }
-            this.Value = quantity;
+            Value = quantity;
         }
         protected override IEnumerable<object> GetEqualityComponents()
         {

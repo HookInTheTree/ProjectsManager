@@ -1,6 +1,6 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
+namespace ProjectsManager.Domain.WorkItem.ValueObjects;
 
 public class WorkItemId:AggregateRootId<Guid>
 {

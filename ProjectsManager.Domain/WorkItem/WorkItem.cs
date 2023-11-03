@@ -1,21 +1,22 @@
 ﻿using ProjectsManager.Domain.Common;
+using ProjectsManager.Domain.Common.ValueObjects;
 using ProjectsManager.Domain.EmployeeAggregate;
-using ProjectsManager.Domain.ProjectAggregate.Entities;
-using ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
+using ProjectsManager.Domain.Resource.ValueObjects;
+using ProjectsManager.Domain.WorkItem.ValueObjects;
 
-namespace ProjectsManager.Domain.WorkItemAggregate;
+namespace ProjectsManager.Domain.WorkItem;
 
-public class WorkItem:AggregateRoot<WorkItemId, Guid>
+public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
 {
     public Name Name { get; }
     public Description Description { get; private set; }
     public Duration Duration { get; private set; }
     public ProjectTaskStatus Status { get; private set; }
     
-    public Project Project { get; private set; }
-    public Employee Owner { get; private set; }
-    private readonly List<Resource> _resources;
-    public IReadOnlyCollection<Resource> Resources => _resources;
+    public ProjectAggregate.ValueObjects.ProjectId ProjectId { get; private set; }
+    public EmployeeAggregate.ValueObjects.EmployeeId OwnerId { get; private set; }
+    private readonly List<WorkItemResource> _resourcesIds;
+    public IReadOnlyCollection<WorkItemResource> ResourcesIds => _resourcesIds;
 
     public WorkItem(WorkItemId id, Name name, Description description, Duration duration)
     :base(id)
@@ -23,7 +24,7 @@ public class WorkItem:AggregateRoot<WorkItemId, Guid>
         Name = name;
         Description = description;
         Duration = duration;
-        _resources = new List<Resource>();
+        _resourcesIds = new List<WorkItemResource>();
     }
 
     public void ReturnToDraft()
@@ -87,8 +88,8 @@ public class WorkItem:AggregateRoot<WorkItemId, Guid>
         }
     }
     
-    public void AddResource(Resource resource) => _resources.Add(resource);
-    public void RemoveResource(Resource resource) => _resources.Remove(resource);
+    public void AddResource(WorkItemResource resource) => _resourcesIds.Add(resource);
+    public void RemoveResource(WorkItemResource resource) => _resourcesIds.Remove(resource);
     public void IncreaseDuration(TimeSpan timeToAdd)
     {
         Duration = new Duration(Duration.Start, Duration.End.Add(timeToAdd));
@@ -98,13 +99,16 @@ public class WorkItem:AggregateRoot<WorkItemId, Guid>
     {
         Description = description;
     }
-    public void SetOwner(Employee employee)
-    {
-        if (!Project.MemberIds.Any(x => x.Equals(employee)))
-        {
-            throw new ArgumentException(
-                $"The employee with Id - {employee.Id} is not working on the project (Id: {Project.Id}! He cannot process the task (Id:{Id}!");
-        }
-    }
 
+    //#TODO Think about DDD thrilemma
+    //public void SetOwner(EmployeeAggregate.ValueObjects.EmployeeId employee)
+    //{
+    //    if (!ProjectId.MemberIds.Any(x => x.Equals(employee)))
+    //    {
+    //        throw new ArgumentException(
+    //            $"The employee with Id - {employee.Id} is not working on the project (Id: {ProjectId}! He cannot process the task (Id:{Id}!");
+    //    }
+    //}
+
+    private WorkItem() { }
 }

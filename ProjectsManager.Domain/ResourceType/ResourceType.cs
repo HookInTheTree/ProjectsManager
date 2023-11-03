@@ -1,14 +1,15 @@
 ﻿using ProjectsManager.Domain.Common;
-using ProjectsManager.Domain.WorkItemAggregate.ResourceType.ValueObjects;
+using ProjectsManager.Domain.Common.ValueObjects;
+using ProjectsManager.Domain.ResourceType.ValueObjects;
 
-namespace ProjectsManager.Domain.WorkItemAggregate.Entities
+namespace ProjectsManager.Domain.ResourceType
 {
-    public class ResourceType:Entity<ResourceTypeId>
+    public class ResourceType : Entity<ResourceTypeId>
     {
         public Name Name { get; private set; }
-        public Description Description { get;private set; }
-        public ResourceType(ResourceTypeId id,Name name, Description description)
-        :base(id)
+        public Description Description { get; private set; }
+        public ResourceType(ResourceTypeId id, Name name, Description description)
+        : base(id)
         {
             Name = name;
             Description = description;

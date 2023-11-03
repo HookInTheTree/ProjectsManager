@@ -1,24 +1,25 @@
 ﻿using ProjectsManager.Domain.Common;
-namespace ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-public class Duration: ValueObject
+
+namespace ProjectsManager.Domain.Common.ValueObjects;
+
+public sealed class Duration:ValueObject
 {
     public DateTime Start { get; }
     public DateTime End { get; }
 
-    private Duration() { }
-
     public Duration(DateTime start, DateTime end)
     {
         if (start == DateTime.MinValue || start == DateTime.MaxValue)
-            throw new ArgumentException($"Project start can't be min - {DateTime.MinValue} or {DateTime.MaxValue}");
+            throw new ArgumentException($"Start can't be min - {DateTime.MinValue} or {DateTime.MaxValue}");
         else if (end == DateTime.MinValue || end == DateTime.MaxValue)
-            throw new ArgumentException($"Project end can't be min - {DateTime.MinValue} or {DateTime.MaxValue}");
+            throw new ArgumentException($"End can't be min - {DateTime.MinValue} or {DateTime.MaxValue}");
         else if (start >= end)
-            throw new ArgumentException($"Project start can't be more or equal than end");
+            throw new ArgumentException($"Start can't be more or equal than end");
         
         Start = start;
         End = end;
     }
+    private Duration() { }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

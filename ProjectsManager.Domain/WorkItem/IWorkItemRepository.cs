@@ -1,6 +1,6 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.ProjectAggregate.Repositories;
+namespace ProjectsManager.Domain.WorkItem.Repositories;
 
 public interface IWorkItemRepository:IRepository<Task>
 {

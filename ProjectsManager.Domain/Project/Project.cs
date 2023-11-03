@@ -2,10 +2,8 @@
 using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
 using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
 using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
-using ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
-using Description = ProjectsManager.Domain.ProjectAggregate.ValueObjects.Description;
-using Duration = ProjectsManager.Domain.ProjectAggregate.ValueObjects.Duration;
-using Name = ProjectsManager.Domain.ProjectAggregate.ValueObjects.Name;
+using ProjectsManager.Domain.Common.ValueObjects;
+using ProjectsManager.Domain.WorkItem.ValueObjects;
 
 namespace ProjectsManager.Domain.ProjectAggregate.Entities;
 

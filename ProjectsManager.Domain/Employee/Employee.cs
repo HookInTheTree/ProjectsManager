@@ -2,7 +2,7 @@
 using ProjectsManager.Domain.Common;
 using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
+using ProjectsManager.Domain.WorkItem.ValueObjects;
 
 namespace ProjectsManager.Domain.EmployeeAggregate;
 

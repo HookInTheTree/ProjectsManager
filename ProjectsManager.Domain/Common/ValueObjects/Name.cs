@@ -1,19 +1,24 @@
 ﻿using ProjectsManager.Domain.Common;
-namespace ProjectsManager.Domain.WorkItemAggregate.ValueObjects;
+namespace ProjectsManager.Domain.Common.ValueObjects;
 
-public class Name:ValueObject
+public sealed class Name:ValueObject
 {
     public string Value { get; }
 
     public Name(string name)
     {
         if (string.IsNullOrEmpty(name))
-            throw new ArgumentException($"Task name can't be null or whitespace!");
+            throw new ArgumentException($"Name can't be null or whitespace!");
 
         if (name.Length < 50)
-            throw new ArgumentException($"The length of the task name must not be less than 50 characters!");
+            throw new ArgumentException($"The length of the name can't be less than 50 characters!");
         
         Value = name;
+    }
+
+    private Name()
+    {
+        
     }
 
     protected override IEnumerable<object> GetEqualityComponents()

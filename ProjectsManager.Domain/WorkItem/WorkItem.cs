@@ -1,6 +1,8 @@
 ﻿using ProjectsManager.Domain.Common;
 using ProjectsManager.Domain.Common.ValueObjects;
 using ProjectsManager.Domain.EmployeeAggregate;
+using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
+using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
 using ProjectsManager.Domain.Resource.ValueObjects;
 using ProjectsManager.Domain.WorkItem.ValueObjects;
 
@@ -13,8 +15,8 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
     public Duration Duration { get; private set; }
     public ProjectTaskStatus Status { get; private set; }
     
-    public ProjectAggregate.ValueObjects.ProjectId ProjectId { get; private set; }
-    public EmployeeAggregate.ValueObjects.EmployeeId OwnerId { get; private set; }
+    public ProjectId ProjectId { get; private set; }
+    public EmployeeId OwnerId { get; private set; }
     private readonly List<WorkItemResource> _resourcesIds;
     public IReadOnlyCollection<WorkItemResource> ResourcesIds => _resourcesIds;
 

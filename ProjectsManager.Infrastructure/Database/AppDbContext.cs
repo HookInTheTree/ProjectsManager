@@ -29,7 +29,5 @@ namespace ProjectsManager.Infrastructure.Database
         internal DbSet<Organization> Organizations { get; set; }
         internal DbSet<Employee> Employees { get; set; }
         // internal DbSet<WorkItemEntity> Tasks { get; set; }
-        // internal DbSet<ResourceEntity> Resources { get; set; }
-        // internal DbSet<ResourceTypeEntity> ResourceTypes { get; set; }
     }
 }

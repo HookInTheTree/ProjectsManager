@@ -1,9 +1,7 @@
 ﻿using ProjectsManager.Domain.Common;
 using ProjectsManager.Domain.Common.ValueObjects;
-using ProjectsManager.Domain.EmployeeAggregate;
 using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
 using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using ProjectsManager.Domain.Resource.ValueObjects;
 using ProjectsManager.Domain.WorkItem.ValueObjects;
 
 namespace ProjectsManager.Domain.WorkItem;
@@ -17,8 +15,6 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
     
     public ProjectId ProjectId { get; private set; }
     public EmployeeId OwnerId { get; private set; }
-    private readonly List<WorkItemResource> _resourcesIds;
-    public IReadOnlyCollection<WorkItemResource> ResourcesIds => _resourcesIds;
 
     public WorkItem(WorkItemId id, Name name, Description description, Duration duration)
     :base(id)
@@ -26,7 +22,6 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
         Name = name;
         Description = description;
         Duration = duration;
-        _resourcesIds = new List<WorkItemResource>();
     }
 
     public void ReturnToDraft()
@@ -90,8 +85,6 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
         }
     }
     
-    public void AddResource(WorkItemResource resource) => _resourcesIds.Add(resource);
-    public void RemoveResource(WorkItemResource resource) => _resourcesIds.Remove(resource);
     public void IncreaseDuration(TimeSpan timeToAdd)
     {
         Duration = new Duration(Duration.Start, Duration.End.Add(timeToAdd));

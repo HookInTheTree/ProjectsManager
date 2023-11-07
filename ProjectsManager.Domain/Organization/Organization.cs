@@ -27,7 +27,7 @@ public sealed class Organization : AggregateRoot<OrganizationId, Guid>
         Name name,
         JuridicalAddress juridicalAddress,
         ContactInfo contactInfo
-        ):base(id)
+    ):base(id)
     {
         Name = name;
         JuridicalAddress = juridicalAddress;

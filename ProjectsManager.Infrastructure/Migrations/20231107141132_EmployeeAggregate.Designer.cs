@@ -12,8 +12,8 @@ using ProjectsManager.Infrastructure.Database;
 namespace ProjectsManager.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231031193058_OrganizationAggregate")]
-    partial class OrganizationAggregate
+    [Migration("20231107141132_EmployeeAggregate")]
+    partial class EmployeeAggregate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -370,7 +370,7 @@ namespace ProjectsManager.Infrastructure.Migrations
                                 .HasForeignKey("EmployeeId");
                         });
 
-                    b.OwnsMany("ProjectsManager.Domain.WorkItemAggregate.ValueObjects.WorkItemId", "WorkItemIds", b1 =>
+                    b.OwnsMany("ProjectsManager.Domain.WorkItem.ValueObjects.WorkItemId", "WorkItemIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -408,6 +408,19 @@ namespace ProjectsManager.Infrastructure.Migrations
 
             modelBuilder.Entity("ProjectsManager.Domain.OrganizationAggregate.Organization", b =>
                 {
+                    b.OwnsOne("ProjectsManager.Domain.Common.ValueObjects.Name", "Name", b1 =>
+                        {
+                            b1.Property<Guid>("OrganizationId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.HasKey("OrganizationId");
+
+                            b1.ToTable("Organizations");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrganizationId");
+                        });
+
                     b.OwnsMany("ProjectsManager.Domain.EmployeeAggregate.ValueObjects.EmployeeId", "EmployeeIds", b1 =>
                         {
                             b1.Property<int>("Id")
@@ -546,23 +559,6 @@ namespace ProjectsManager.Infrastructure.Migrations
 
                             b1.Navigation("PostalСode")
                                 .IsRequired();
-                        });
-
-                    b.OwnsOne("ProjectsManager.Domain.OrganizationAggregate.ValueObjects.Name", "Name", b1 =>
-                        {
-                            b1.Property<Guid>("OrganizationId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("OrganizationId");
-
-                            b1.ToTable("Organizations");
-
-                            b1.WithOwner()
-                                .HasForeignKey("OrganizationId");
                         });
 
                     b.Navigation("ContactInfo")

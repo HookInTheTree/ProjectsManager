@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectsManager.Infrastructure.Database;
 
@@ -11,9 +12,11 @@ using ProjectsManager.Infrastructure.Database;
 namespace ProjectsManager.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231107141211_ProjectsAggregate")]
+    partial class ProjectsAggregate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,22 +165,6 @@ namespace ProjectsManager.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects", (string)null);
-                });
-
-            modelBuilder.Entity("ProjectsManager.Domain.WorkItem.WorkItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("OwnerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WorkItems", (string)null);
                 });
 
             modelBuilder.Entity("ProjectsManager.Infrastructure.Identity.ApplicationRole", b =>
@@ -704,80 +691,6 @@ namespace ProjectsManager.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("WorkItemIds");
-                });
-
-            modelBuilder.Entity("ProjectsManager.Domain.WorkItem.WorkItem", b =>
-                {
-                    b.OwnsOne("ProjectsManager.Domain.WorkItem.ValueObjects.ProjectTaskStatus", "Status", b1 =>
-                        {
-                            b1.Property<Guid>("WorkItemId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("Id")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Name")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("WorkItemId");
-
-                            b1.ToTable("WorkItems");
-
-                            b1.WithOwner()
-                                .HasForeignKey("WorkItemId");
-                        });
-
-                    b.OwnsOne("ProjectsManager.Domain.Common.ValueObjects.Description", "Description", b1 =>
-                        {
-                            b1.Property<Guid>("WorkItemId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.HasKey("WorkItemId");
-
-                            b1.ToTable("WorkItems");
-
-                            b1.WithOwner()
-                                .HasForeignKey("WorkItemId");
-                        });
-
-                    b.OwnsOne("ProjectsManager.Domain.Common.ValueObjects.Duration", "Duration", b1 =>
-                        {
-                            b1.Property<Guid>("WorkItemId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.HasKey("WorkItemId");
-
-                            b1.ToTable("WorkItems");
-
-                            b1.WithOwner()
-                                .HasForeignKey("WorkItemId");
-                        });
-
-                    b.OwnsOne("ProjectsManager.Domain.Common.ValueObjects.Name", "Name", b1 =>
-                        {
-                            b1.Property<Guid>("WorkItemId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.HasKey("WorkItemId");
-
-                            b1.ToTable("WorkItems");
-
-                            b1.WithOwner()
-                                .HasForeignKey("WorkItemId");
-                        });
-
-                    b.Navigation("Description")
-                        .IsRequired();
-
-                    b.Navigation("Duration")
-                        .IsRequired();
-
-                    b.Navigation("Name")
-                        .IsRequired();
-
-                    b.Navigation("Status")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

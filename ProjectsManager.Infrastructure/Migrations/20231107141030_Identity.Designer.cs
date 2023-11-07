@@ -12,8 +12,8 @@ using ProjectsManager.Infrastructure.Database;
 namespace ProjectsManager.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231031190150_identityModels")]
-    partial class identityModels
+    [Migration("20231107141030_Identity")]
+    partial class Identity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

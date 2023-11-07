@@ -16,12 +16,20 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
     public ProjectId ProjectId { get; private set; }
     public EmployeeId OwnerId { get; private set; }
 
-    public WorkItem(WorkItemId id, Name name, Description description, Duration duration)
+    public WorkItem(
+        WorkItemId id,
+        Name name,
+        Description description,
+        Duration duration,
+        ProjectId projectId,
+        EmployeeId employeeId)
     :base(id)
     {
         Name = name;
         Description = description;
         Duration = duration;
+        ProjectId = projectId;
+        OwnerId = employeeId;
     }
 
     public void ReturnToDraft()

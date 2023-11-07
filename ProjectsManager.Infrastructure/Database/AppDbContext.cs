@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.EmployeeAggregate;
 using ProjectsManager.Domain.OrganizationAggregate;
 using ProjectsManager.Domain.ProjectAggregate.Entities;
+using ProjectsManager.Domain.WorkItem;
 using ProjectsManager.Infrastructure.Database.Configurations;
 using ProjectsManager.Infrastructure.Identity;
 
@@ -22,12 +23,13 @@ namespace ProjectsManager.Infrastructure.Database
             builder.ApplyConfiguration(new EmployeeConfig());
             builder.ApplyConfiguration(new OrganizationConfig());
             builder.ApplyConfiguration(new ProjectConfig());
+            builder.ApplyConfiguration(new WorkItemConfig());
             // builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         //
         internal DbSet<Project> Projects { get; set; }
         internal DbSet<Organization> Organizations { get; set; }
         internal DbSet<Employee> Employees { get; set; }
-        // internal DbSet<WorkItemEntity> Tasks { get; set; }
+        internal DbSet<WorkItem> WorkItems { get; set; }
     }
 }

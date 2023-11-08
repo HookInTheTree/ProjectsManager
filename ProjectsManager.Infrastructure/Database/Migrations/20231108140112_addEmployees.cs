@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectsManager.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class EmployeeAggregate : Migration
+    public partial class addEmployees : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

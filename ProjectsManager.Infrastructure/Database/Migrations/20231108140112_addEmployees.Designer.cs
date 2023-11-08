@@ -12,8 +12,8 @@ using ProjectsManager.Infrastructure.Database;
 namespace ProjectsManager.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231107141132_EmployeeAggregate")]
-    partial class EmployeeAggregate
+    [Migration("20231108140112_addEmployees")]
+    partial class addEmployees
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -412,6 +412,10 @@ namespace ProjectsManager.Infrastructure.Migrations
                         {
                             b1.Property<Guid>("OrganizationId")
                                 .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("OrganizationId");
 

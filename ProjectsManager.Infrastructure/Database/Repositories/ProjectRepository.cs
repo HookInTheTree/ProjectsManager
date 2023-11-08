@@ -1,4 +1,5 @@
-﻿using ProjectsManager.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectsManager.Domain;
 using ProjectsManager.Domain.ProjectAggregate.Entities;
 using ProjectsManager.Domain.ProjectAggregate.Repositories;
 
@@ -6,28 +7,53 @@ namespace ProjectsManager.Infrastructure.Database.Repositories;
 
 public class ProjectRepository:IProjectRepository
 {
-    public Task<List<Project>> GetAll()
+    private readonly AppDbContext context;
+
+    public ProjectRepository(AppDbContext _context)
     {
-        throw new NotImplementedException();
+        context = _context;
     }
 
-    public Task<List<Project>> GetByCondition(Func<Project, bool> predicate)
+    public async Task<List<Project>> GetAll()
     {
-        throw new NotImplementedException();
+        return await context.Projects.ToListAsync();
+    }
+
+    public async Task<List<Project>> GetByCondition(Func<Project, bool> predicate)
+    {
+        return await context.Projects.Where(x => predicate(x)).ToListAsync();
     }
 
     public Task<Project> Update(Project model)
     {
-        throw new NotImplementedException();
+        context.Projects.Update(model);
+        return Task.FromResult<Project>(model);
     }
 
-    public Task<Project> Create(Project model)
+    public async Task Insert(Project model)
     {
-        throw new NotImplementedException();
+        await context.Projects.AddAsync(model);
     }
 
-    public Task<Project> Remove(Project model)
+    public async Task<Project> Remove(Project model)
     {
-        throw new NotImplementedException();
+        var modelInDb = await context.Projects.FirstOrDefaultAsync(x => x.Id == model.Id);
+
+        if (modelInDb is not null)
+        {
+            context.Projects.Remove(modelInDb);
+        }
+
+        return model;
+    }
+
+    public async Task Save()
+    {
+        await context.SaveChangesAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await context.DisposeAsync();
     }
 }

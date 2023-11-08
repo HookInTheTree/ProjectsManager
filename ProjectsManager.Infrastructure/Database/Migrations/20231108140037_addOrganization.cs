@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectsManager.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class OrganizationAggregate : Migration
+    public partial class addOrganization : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,6 +16,7 @@ namespace ProjectsManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name_Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JuridicalAddress_PostalСode_Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JuridicalAddress_PhysicalAddress_State = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JuridicalAddress_PhysicalAddress_City = table.Column<string>(type: "nvarchar(max)", nullable: false),

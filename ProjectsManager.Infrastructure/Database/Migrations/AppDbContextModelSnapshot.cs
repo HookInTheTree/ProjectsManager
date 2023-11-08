@@ -464,6 +464,10 @@ namespace ProjectsManager.Infrastructure.Migrations
                             b1.Property<Guid>("OrganizationId")
                                 .HasColumnType("uniqueidentifier");
 
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
                             b1.HasKey("OrganizationId");
 
                             b1.ToTable("Organizations");
@@ -608,6 +612,10 @@ namespace ProjectsManager.Infrastructure.Migrations
                             b1.Property<Guid>("ProjectId")
                                 .HasColumnType("uniqueidentifier");
 
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
                             b1.HasKey("ProjectId");
 
                             b1.ToTable("Projects");
@@ -620,6 +628,12 @@ namespace ProjectsManager.Infrastructure.Migrations
                         {
                             b1.Property<Guid>("ProjectId")
                                 .HasColumnType("uniqueidentifier");
+
+                            b1.Property<DateTime>("End")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<DateTime>("Start")
+                                .HasColumnType("datetime2");
 
                             b1.HasKey("ProjectId");
 
@@ -658,6 +672,10 @@ namespace ProjectsManager.Infrastructure.Migrations
                         {
                             b1.Property<Guid>("ProjectId")
                                 .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("ProjectId");
 
@@ -733,6 +751,10 @@ namespace ProjectsManager.Infrastructure.Migrations
                             b1.Property<Guid>("WorkItemId")
                                 .HasColumnType("uniqueidentifier");
 
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
                             b1.HasKey("WorkItemId");
 
                             b1.ToTable("WorkItems");
@@ -746,6 +768,12 @@ namespace ProjectsManager.Infrastructure.Migrations
                             b1.Property<Guid>("WorkItemId")
                                 .HasColumnType("uniqueidentifier");
 
+                            b1.Property<DateTime>("End")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<DateTime>("Start")
+                                .HasColumnType("datetime2");
+
                             b1.HasKey("WorkItemId");
 
                             b1.ToTable("WorkItems");
@@ -758,6 +786,10 @@ namespace ProjectsManager.Infrastructure.Migrations
                         {
                             b1.Property<Guid>("WorkItemId")
                                 .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("WorkItemId");
 

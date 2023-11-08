@@ -1,32 +1,58 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.OrganizationAggregate;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 
 public class OrganizationRepository:IOrganizationRepository
 {
-    public Task<List<Organization>> GetAll()
+    private readonly AppDbContext context;
+
+    public OrganizationRepository(AppDbContext _context)
     {
-        throw new NotImplementedException();
+        context = _context;
     }
 
-    public Task<List<Organization>> GetByCondition(Func<Organization, bool> predicate)
+    public async Task<List<Organization>> GetAll()
     {
-        throw new NotImplementedException();
+        return await context.Organizations.ToListAsync();
+    }
+
+    public async Task<List<Organization>> GetByCondition(Func<Organization, bool> predicate)
+    {
+        return await context.Organizations.Where(x => predicate(x)).ToListAsync();
     }
 
     public Task<Organization> Update(Organization model)
     {
-        throw new NotImplementedException();
+        context.Organizations.Update(model);
+        return Task.FromResult<Organization>(model);
     }
 
-    public Task<Organization> Create(Organization model)
+    public async Task Insert(Organization model)
     {
-        throw new NotImplementedException();
+        await context.Organizations.AddAsync(model);
     }
 
-    public Task<Organization> Remove(Organization model)
+    public async Task<Organization> Remove(Organization model)
     {
-        throw new NotImplementedException();
+        var modelInDb = await context.Organizations.FirstOrDefaultAsync(x => x.Id == model.Id);
+
+        if (modelInDb is not null)
+        {
+            context.Organizations.Remove(modelInDb);
+        }
+
+        return model;
+    }
+
+    public async Task Save()
+    {
+        await context.SaveChangesAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await context.DisposeAsync();
     }
 }

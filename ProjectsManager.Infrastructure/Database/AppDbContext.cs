@@ -10,7 +10,7 @@ using ProjectsManager.Infrastructure.Identity;
 
 namespace ProjectsManager.Infrastructure.Database
 {
-    internal class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {
@@ -20,13 +20,8 @@ namespace ProjectsManager.Infrastructure.Database
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new EmployeeConfig());
-            builder.ApplyConfiguration(new OrganizationConfig());
-            builder.ApplyConfiguration(new ProjectConfig());
-            builder.ApplyConfiguration(new WorkItemConfig());
-            // builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
-        //
         internal DbSet<Project> Projects { get; set; }
         internal DbSet<Organization> Organizations { get; set; }
         internal DbSet<Employee> Employees { get; set; }

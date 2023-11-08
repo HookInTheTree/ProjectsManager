@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectsManager.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class ProjectsAggregate : Migration
+    public partial class addProjects : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,6 +16,10 @@ namespace ProjectsManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name_Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description_Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Duration_Start = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Duration_End = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OwnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>

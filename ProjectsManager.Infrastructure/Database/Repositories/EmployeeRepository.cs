@@ -6,33 +6,51 @@ namespace ProjectsManager.Infrastructure.Database.Repositories;
 public class EmployeeRepository:IEmployeeRepository
 {
     private readonly AppDbContext context;
-    internal EmployeeRepository(AppDbContext _context)
+    public EmployeeRepository(AppDbContext _context)
     {
         context = _context;
     }
     
-    public Task<List<Employee>> GetAll()
+    public async Task<List<Employee>> GetAll()
     {
-        throw new NotImplementedException();
+        return await context.Employees.ToListAsync();
     }
 
-    public Task<List<Employee>> GetByCondition(Func<Employee, bool> predicate)
+    public async Task<List<Employee>> GetByCondition(Func<Employee, bool> predicate)
     {
-        throw new NotImplementedException();
+        return await context.Employees.Where(x => predicate(x)).ToListAsync();
     }
 
     public Task<Employee> Update(Employee model)
     {
-        throw new NotImplementedException();
+        context.Employees.Update(model);
+        return Task.FromResult(model);
     }
 
-    public Task<Employee> Create(Employee model)
+    public async Task Insert(Employee model)
     {
-        throw new NotImplementedException();
+        await context.Employees.AddAsync(model);
     }
 
-    public Task<Employee> Remove(Employee model)
+    public async Task<Employee> Remove(Employee model)
     {
-        throw new NotImplementedException();
+        var modelInDb = await context.Employees.FirstOrDefaultAsync(x => x.Id == model.Id);
+
+        if (modelInDb is not null)
+        {
+            context.Employees.Remove(modelInDb);
+        }
+
+        return model;
+    }
+
+    public async Task Save()
+    {
+        await context.SaveChangesAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await context.DisposeAsync();
     }
 }

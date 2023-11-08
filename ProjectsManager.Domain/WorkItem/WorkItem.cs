@@ -8,7 +8,7 @@ namespace ProjectsManager.Domain.WorkItem;
 
 public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
 {
-    public Name Name { get; }
+    public Name Name { get; private set; }
     public Description Description { get; private set; }
     public Duration Duration { get; private set; }
     public ProjectTaskStatus Status { get; private set; }
@@ -30,6 +30,7 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
         Duration = duration;
         ProjectId = projectId;
         OwnerId = employeeId;
+        Status = ProjectTaskStatus.Draft;
     }
 
     public void ReturnToDraft()

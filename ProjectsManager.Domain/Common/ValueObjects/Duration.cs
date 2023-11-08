@@ -4,8 +4,8 @@ namespace ProjectsManager.Domain.Common.ValueObjects;
 
 public sealed class Duration:ValueObject
 {
-    public DateTime Start { get; }
-    public DateTime End { get; }
+    public DateTime Start { get; private set; }
+    public DateTime End { get; private set; }
 
     public Duration(DateTime start, DateTime end)
     {

@@ -2,7 +2,7 @@
 
 namespace ProjectsManager.Domain.WorkItem.Repositories;
 
-public interface IWorkItemRepository:IRepository<Task>
+public interface IWorkItemRepository:IRepository<WorkItem>
 {
     //add some another logic that is specified for WorkItem
 }

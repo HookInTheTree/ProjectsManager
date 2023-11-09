@@ -39,9 +39,14 @@ public sealed class Project : AggregateRoot<ProjectId, Guid>
         Description = description;
     }
 
-    public void IncreaseDuration(TimeSpan timeToExtend)
+    public void IncreaseDuration(TimeSpan timeToIncrease)
     {
-        Duration = new Duration(Duration.Start, Duration.End.Add(timeToExtend));
+        Duration = new Duration(Duration.Start, Duration.End.Add(timeToIncrease));
+    }
+
+    public void DecreaseDuration(TimeSpan timeToDecrease)
+    {
+        Duration = new Duration(Duration.Start, Duration.End.Add(-1 * timeToDecrease));
     }
     #endregion
 

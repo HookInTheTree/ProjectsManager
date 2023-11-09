@@ -42,6 +42,20 @@ public sealed class Organization : AggregateRoot<OrganizationId, Guid>
 
     }
 
+    public void ChangeName(Name name)
+    {
+        Name = name;
+    }
+
+    public void ChangeJuridicalAddress(JuridicalAddress address)
+    {
+        JuridicalAddress = address;
+    }
+
+    public void ChangeContactInfo(ContactInfo contactInfo)
+    {
+        ContactInfo = contactInfo;
+    }
 
     public void RemoveProject(ProjectId projectId)
     {

@@ -98,21 +98,25 @@ public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
     {
         Duration = new Duration(Duration.Start, Duration.End.Add(timeToAdd));
     }
+    public void DecreaseDuration(TimeSpan timeToDecrease)
+    {
+        Duration = new Duration(Duration.Start, Duration.End.Add(-1 * timeToDecrease));
+    }
+
+    public void ChangeName(Name name)
+    {
+        Name = name;
+    }
 
     public void ChangeDescription(Description description)
     {
         Description = description;
     }
 
-    //#TODO Think about DDD thrilemma
-    //public void SetOwner(EmployeeAggregate.ValueObjects.EmployeeId employee)
-    //{
-    //    if (!ProjectId.MemberIds.Any(x => x.Equals(employee)))
-    //    {
-    //        throw new ArgumentException(
-    //            $"The employee with Id - {employee.Id} is not working on the project (Id: {ProjectId}! He cannot process the task (Id:{Id}!");
-    //    }
-    //}
+    public void SetOwner(EmployeeId employeeId)
+    {
+        OwnerId = employeeId;
+    }
 
     private WorkItem() { }
 }

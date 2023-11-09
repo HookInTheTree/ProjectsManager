@@ -3,7 +3,7 @@ using ProjectsManager.Domain.Aggregates.Employee;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 
-public class EmployeeRepository:IEmployeeRepository
+public class EmployeeRepository: IEmployeeRepository
 {
     private readonly AppDbContext context;
     public EmployeeRepository(AppDbContext _context)
@@ -52,5 +52,10 @@ public class EmployeeRepository:IEmployeeRepository
     public async ValueTask DisposeAsync()
     {
         await context.DisposeAsync();
+    }
+
+    public Task<Employee> Create(Employee model)
+    {
+        throw new NotImplementedException();
     }
 }

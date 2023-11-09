@@ -59,5 +59,10 @@ namespace ProjectsManager.Infrastructure.Database.Repositories
         {
             await context.DisposeAsync();
         }
+
+        public Task<WorkItem> Create(WorkItem model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

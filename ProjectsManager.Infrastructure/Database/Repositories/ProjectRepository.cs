@@ -4,7 +4,7 @@ using ProjectsManager.Domain.Aggregates.Project;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 
-public class ProjectRepository:IProjectRepository
+public class ProjectRepository : IProjectRepository
 {
     private readonly AppDbContext context;
 
@@ -54,5 +54,10 @@ public class ProjectRepository:IProjectRepository
     public async ValueTask DisposeAsync()
     {
         await context.DisposeAsync();
+    }
+
+    public Task<Project> Create(Project model)
+    {
+        throw new NotImplementedException();
     }
 }

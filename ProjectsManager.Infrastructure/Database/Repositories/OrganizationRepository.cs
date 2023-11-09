@@ -4,7 +4,7 @@ using ProjectsManager.Domain.Aggregates.Organization;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 
-public class OrganizationRepository:IOrganizationRepository
+public class OrganizationRepository : IOrganizationRepository
 {
     private readonly AppDbContext context;
 
@@ -54,5 +54,10 @@ public class OrganizationRepository:IOrganizationRepository
     public async ValueTask DisposeAsync()
     {
         await context.DisposeAsync();
+    }
+
+    public Task<Organization> Create(Organization model)
+    {
+        throw new NotImplementedException();
     }
 }

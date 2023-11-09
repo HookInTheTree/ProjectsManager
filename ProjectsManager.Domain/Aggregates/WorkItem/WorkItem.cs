@@ -11,7 +11,7 @@ public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
     public Name Name { get; private set; }
     public Description Description { get; private set; }
     public Duration Duration { get; private set; }
-    public ProjectTaskStatus Status { get; private set; }
+    public WorkItemStatus Status { get; private set; }
 
     public ProjectId ProjectId { get; private set; }
     public EmployeeId OwnerId { get; private set; }
@@ -30,14 +30,14 @@ public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
         Duration = duration;
         ProjectId = projectId;
         OwnerId = employeeId;
-        Status = ProjectTaskStatus.Draft;
+        Status = WorkItemStatus.Draft;
     }
 
     public void ReturnToDraft()
     {
-        if (Status == ProjectTaskStatus.Activated || Status == ProjectTaskStatus.Rejected)
+        if (Status == WorkItemStatus.Activated || Status == WorkItemStatus.Rejected)
         {
-            Status = ProjectTaskStatus.Draft;
+            Status = WorkItemStatus.Draft;
         }
         else
         {
@@ -47,9 +47,9 @@ public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
     }
     public void Activate()
     {
-        if (Status == ProjectTaskStatus.Draft || Status == ProjectTaskStatus.Completed)
+        if (Status == WorkItemStatus.Draft || Status == WorkItemStatus.Completed)
         {
-            Status = ProjectTaskStatus.Activated;
+            Status = WorkItemStatus.Activated;
         }
         else
         {
@@ -59,9 +59,9 @@ public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
     }
     public void Complete()
     {
-        if (Status == ProjectTaskStatus.Activated)
+        if (Status == WorkItemStatus.Activated)
         {
-            Status = ProjectTaskStatus.Completed;
+            Status = WorkItemStatus.Completed;
         }
         else
         {
@@ -71,9 +71,9 @@ public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
     }
     public void Reject()
     {
-        if (Status == ProjectTaskStatus.Completed)
+        if (Status == WorkItemStatus.Completed)
         {
-            Status = ProjectTaskStatus.Rejected;
+            Status = WorkItemStatus.Rejected;
         }
         else
         {
@@ -83,9 +83,9 @@ public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
     }
     public void Verify()
     {
-        if (Status == ProjectTaskStatus.Completed)
+        if (Status == WorkItemStatus.Completed)
         {
-            Status = ProjectTaskStatus.Verified;
+            Status = WorkItemStatus.Verified;
         }
         else
         {

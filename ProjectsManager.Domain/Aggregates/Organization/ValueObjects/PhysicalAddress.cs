@@ -1,13 +1,13 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
+namespace ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 
-public class PhysicalAddress:ValueObject
+public class PhysicalAddress : ValueObject
 {
     public string State { get; private set; }
-    public string City { get; private set;}
-    public string Street { get; private set;}
-    public string Building { get; private set;}
+    public string City { get; private set; }
+    public string Street { get; private set; }
+    public string Building { get; private set; }
 
     public PhysicalAddress(string state, string city, string street, string building)
     {

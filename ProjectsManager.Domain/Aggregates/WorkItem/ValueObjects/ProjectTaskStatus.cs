@@ -1,6 +1,6 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.WorkItem.ValueObjects;
+namespace ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
 
 public class ProjectTaskStatus : Enumeration
 {

@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ProjectsManager.Domain.EmployeeAggregate;
-using ProjectsManager.Domain.OrganizationAggregate;
-using ProjectsManager.Domain.ProjectAggregate.Entities;
-using ProjectsManager.Domain.WorkItem;
+using ProjectsManager.Domain.Aggregates.Employee;
+using ProjectsManager.Domain.Aggregates.Organization;
+using ProjectsManager.Domain.Aggregates.Project;
+using ProjectsManager.Domain.Aggregates.WorkItem;
 using ProjectsManager.Infrastructure.Database.Configurations;
 using ProjectsManager.Infrastructure.Identity;
 

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
-using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using ProjectsManager.Domain.WorkItem;
-using ProjectsManager.Domain.WorkItem.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Project.ValueObjects;
+using ProjectsManager.Domain.Aggregates.WorkItem;
+using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
 
 namespace ProjectsManager.Infrastructure.Database.Configurations
 {

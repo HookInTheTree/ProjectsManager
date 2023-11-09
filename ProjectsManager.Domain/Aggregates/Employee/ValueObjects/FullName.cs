@@ -1,12 +1,12 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
+namespace ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
 
-public class FullName:ValueObject
+public class FullName : ValueObject
 {
     public string Name { get; private set; }
-    public string MiddleName { get;  private set; }
-    public string LastName { get;  private set;}
+    public string MiddleName { get; private set; }
+    public string LastName { get; private set; }
 
     public FullName(string name, string middleName, string lastName)
     {

@@ -1,7 +1,6 @@
-﻿
-using ProjectsManager.Domain.Common;
+﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
+namespace ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 
 public class JuridicalAddress : ValueObject
 {

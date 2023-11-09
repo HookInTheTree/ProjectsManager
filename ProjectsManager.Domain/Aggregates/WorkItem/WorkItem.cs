@@ -1,18 +1,18 @@
-﻿using ProjectsManager.Domain.Common;
+﻿using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Project.ValueObjects;
+using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
+using ProjectsManager.Domain.Common;
 using ProjectsManager.Domain.Common.ValueObjects;
-using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
-using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using ProjectsManager.Domain.WorkItem.ValueObjects;
 
-namespace ProjectsManager.Domain.WorkItem;
+namespace ProjectsManager.Domain.Aggregates.WorkItem;
 
-public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
+public sealed class WorkItem : AggregateRoot<WorkItemId, Guid>
 {
     public Name Name { get; private set; }
     public Description Description { get; private set; }
     public Duration Duration { get; private set; }
     public ProjectTaskStatus Status { get; private set; }
-    
+
     public ProjectId ProjectId { get; private set; }
     public EmployeeId OwnerId { get; private set; }
 
@@ -23,7 +23,7 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
         Duration duration,
         ProjectId projectId,
         EmployeeId employeeId)
-    :base(id)
+    : base(id)
     {
         Name = name;
         Description = description;
@@ -93,7 +93,7 @@ public sealed class WorkItem:AggregateRoot<WorkItemId, Guid>
                 "The task can't be verified. The current status is invalid for this operation!");
         }
     }
-    
+
     public void IncreaseDuration(TimeSpan timeToAdd)
     {
         Duration = new Duration(Duration.Start, Duration.End.Add(timeToAdd));

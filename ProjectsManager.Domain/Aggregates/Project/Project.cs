@@ -1,13 +1,13 @@
 ﻿using ProjectsManager.Domain.Common;
-using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
-using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 using ProjectsManager.Domain.Common.ValueObjects;
-using ProjectsManager.Domain.WorkItem.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
+using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Project.ValueObjects;
 
-namespace ProjectsManager.Domain.ProjectAggregate.Entities;
+namespace ProjectsManager.Domain.Aggregates.Project;
 
-public sealed class Project:AggregateRoot<ProjectId,Guid>
+public sealed class Project : AggregateRoot<ProjectId, Guid>
 {
     public Name Name { get; private set; }
     public Description Description { get; private set; }
@@ -18,7 +18,7 @@ public sealed class Project:AggregateRoot<ProjectId,Guid>
     private readonly List<WorkItemId> _workItemIds;
     public IReadOnlyCollection<WorkItemId> WorkItemIds => _workItemIds;
 
-    public Project(ProjectId id, Name name, Description description, Duration duration, OrganizationId ownerId):base(id)
+    public Project(ProjectId id, Name name, Description description, Duration duration, OrganizationId ownerId) : base(id)
     {
         Name = name;
         Description = description;
@@ -74,5 +74,5 @@ public sealed class Project:AggregateRoot<ProjectId,Guid>
     {
 
     }
-   
+
 }

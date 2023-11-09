@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using ProjectsManager.Domain.OrganizationAggregate;
+using ProjectsManager.Domain.Aggregates.Organization;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 

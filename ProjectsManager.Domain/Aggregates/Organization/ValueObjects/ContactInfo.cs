@@ -1,7 +1,9 @@
 ﻿using ProjectsManager.Domain.Common;
-namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
+using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 
-public class ContactInfo:ValueObject
+namespace ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
+
+public class ContactInfo : ValueObject
 {
     public string WebSite { get; private set; }
     public string Email { get; private set; }

@@ -1,10 +1,10 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
+namespace ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 
-public class PostalCode:ValueObject
+public class PostalCode : ValueObject
 {
-    public string Value { get; private set;}
+    public string Value { get; private set; }
 
     public PostalCode(string code)
     {

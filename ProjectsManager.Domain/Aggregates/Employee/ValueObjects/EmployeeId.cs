@@ -1,8 +1,8 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
+namespace ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
 
-public class EmployeeId:AggregateRootId<Guid>
+public class EmployeeId : AggregateRootId<Guid>
 {
     public override Guid Value { get; protected set; }
 
@@ -19,7 +19,7 @@ public class EmployeeId:AggregateRootId<Guid>
     {
         return new EmployeeId(value);
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

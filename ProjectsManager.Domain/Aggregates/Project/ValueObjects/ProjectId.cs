@@ -1,8 +1,8 @@
 ﻿using ProjectsManager.Domain.Common;
 
-namespace ProjectsManager.Domain.ProjectAggregate.ValueObjects;
+namespace ProjectsManager.Domain.Aggregates.Project.ValueObjects;
 
-public class ProjectId:AggregateRootId<Guid>
+public class ProjectId : AggregateRootId<Guid>
 {
     public override Guid Value { get; protected set; }
 
@@ -19,7 +19,7 @@ public class ProjectId:AggregateRootId<Guid>
     {
         return new ProjectId(value);
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         // ReSharper disable once HeapView.BoxingAllocation

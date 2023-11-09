@@ -1,12 +1,12 @@
-﻿using ProjectsManager.Domain.EmployeeAggregate.ValueObjects;
-using ProjectsManager.Domain.Common;
-using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
-using ProjectsManager.Domain.ProjectAggregate.ValueObjects;
-using ProjectsManager.Domain.WorkItem.ValueObjects;
+﻿using ProjectsManager.Domain.Common;
+using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
+using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
+using ProjectsManager.Domain.Aggregates.Project.ValueObjects;
 
-namespace ProjectsManager.Domain.EmployeeAggregate;
+namespace ProjectsManager.Domain.Aggregates.Employee;
 
-public sealed class Employee:AggregateRoot<EmployeeId, Guid>
+public sealed class Employee : AggregateRoot<EmployeeId, Guid>
 {
     public FullName FullName { get; }
     public PassportDetails PassportInfo { get; }
@@ -17,7 +17,7 @@ public sealed class Employee:AggregateRoot<EmployeeId, Guid>
     public IReadOnlyCollection<WorkItemId> WorkItemIds => _workItemIds.AsReadOnly();
 
     public Employee(EmployeeId id, FullName fullName, PassportDetails passportInfo, OrganizationId organization)
-    :base(id)
+    : base(id)
     {
         FullName = fullName;
         PassportInfo = passportInfo;
@@ -28,6 +28,6 @@ public sealed class Employee:AggregateRoot<EmployeeId, Guid>
 
     private Employee()
     {
-        
+
     }
 }

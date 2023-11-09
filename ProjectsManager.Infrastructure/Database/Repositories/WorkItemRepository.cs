@@ -1,11 +1,10 @@
-﻿using ProjectsManager.Domain.WorkItem.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ProjectsManager.Domain.WorkItem;
+using ProjectsManager.Domain.Aggregates.WorkItem;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories
 {

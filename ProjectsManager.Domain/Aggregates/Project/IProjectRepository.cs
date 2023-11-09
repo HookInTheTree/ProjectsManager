@@ -1,9 +1,9 @@
 ﻿using ProjectsManager.Domain.Common;
 using ProjectsManager.Domain.ProjectAggregate.Entities;
 
-namespace ProjectsManager.Domain.ProjectAggregate.Repositories;
+namespace ProjectsManager.Domain.Aggregates.Project;
 
-public interface IProjectRepository:IRepository<Project>
+public interface IProjectRepository : IRepository<Project>
 {
     //add some another logic that is specified for Project
 }

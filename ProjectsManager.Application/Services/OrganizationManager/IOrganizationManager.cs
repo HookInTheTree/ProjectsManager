@@ -14,11 +14,11 @@ namespace ProjectsManager.Application.Services.OrganizationManager
 {
     public interface IOrganizationManager
     {
-        OrganizationDTO CreateOrganization(OrganizationCreationRequest request);
-        OrganizationDTO UpdateOrganization(OrganizationUpdateRequest organization);
-        OrganizationId DestroyOrganization(OrganizationId organization);
-        OrganizationDTO GetOrganization(OrganizationId organizationId);
-        List<OrganizationDTO> GetOrganizations();
+        Task<OrganizationDTO> CreateOrganization(OrganizationCreationRequest request);
+        Task<OrganizationDTO> UpdateOrganization(OrganizationUpdateRequest request);
+        Task<OrganizationId> DestroyOrganization(OrganizationId organizationId);
+        Task <OrganizationDTO> GetOrganization(OrganizationId organizationId);
+        Task<List<OrganizationDTO>> GetOrganizations();
         OrganizationId AddEmployeeToOrganization(OrganizationId organizationId, Employee employee);
         OrganizationId RemoveEmployeeFromOrganization(OrganizationId organizationId, Employee employee);
         OrganizationId SetOrganizationOwner(OrganizationId organizationId, Employee employee);

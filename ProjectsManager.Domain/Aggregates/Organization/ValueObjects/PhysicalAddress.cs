@@ -9,6 +9,11 @@ public class PhysicalAddress : ValueObject
     public string Street { get; private set; }
     public string Building { get; private set; }
 
+    public override string ToString()
+    {
+        return $"{State} {City} {Street} {Building}";
+    }
+
     public PhysicalAddress(string state, string city, string street, string building)
     {
         State = state;

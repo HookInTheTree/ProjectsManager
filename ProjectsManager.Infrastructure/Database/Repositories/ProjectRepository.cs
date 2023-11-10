@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain;
 using ProjectsManager.Domain.Aggregates.Project;
+using ProjectsManager.Domain.Aggregates.Project.ValueObjects;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 
@@ -60,5 +61,10 @@ public class ProjectRepository : IProjectRepository
     {
         await context.Projects.AddAsync(model);
         return model;
+    }
+    
+    public async Task<Project> GetById(ProjectId id)
+    {
+        return await context.Projects.FirstAsync(x => x.Id == id);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.Aggregates.Employee;
+using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 
@@ -58,5 +59,10 @@ public class EmployeeRepository: IEmployeeRepository
     {
         await context.Employees.AddAsync(model);
         return model;
+    }
+
+    public async Task<Employee> GetById(EmployeeId id)
+    {
+       return await context.Employees.FirstAsync(x => x.Id == id);
     }
 }

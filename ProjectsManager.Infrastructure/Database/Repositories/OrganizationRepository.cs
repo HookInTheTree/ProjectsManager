@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.Aggregates.Organization;
+using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories;
 
@@ -60,5 +61,10 @@ public class OrganizationRepository : IOrganizationRepository
     {
         await context.Organizations.AddAsync(model);
         return model;
+    }
+
+    public async Task<Organization> GetById(OrganizationId id)
+    {
+        return await context.Organizations.FirstAsync(x => x.Id == id);
     }
 }

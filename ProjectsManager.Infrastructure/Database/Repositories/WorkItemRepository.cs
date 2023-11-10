@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.Aggregates.WorkItem;
+using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
 
 namespace ProjectsManager.Infrastructure.Database.Repositories
 {
@@ -64,6 +65,11 @@ namespace ProjectsManager.Infrastructure.Database.Repositories
         {
             await context.WorkItems.AddAsync(model);
             return model;
+        }
+
+        public async Task<WorkItem> GetById(WorkItemId id)
+        {
+            return await context.WorkItems.FirstAsync(x => x.Id == id);
         }
     }
 }

@@ -56,8 +56,9 @@ public class OrganizationRepository : IOrganizationRepository
         await context.DisposeAsync();
     }
 
-    public Task<Organization> Create(Organization model)
+    public async Task<Organization> Create(Organization model)
     {
-        throw new NotImplementedException();
+        await context.Organizations.AddAsync(model);
+        return model;
     }
 }

@@ -56,8 +56,9 @@ public class ProjectRepository : IProjectRepository
         await context.DisposeAsync();
     }
 
-    public Task<Project> Create(Project model)
+    public async Task<Project> Create(Project model)
     {
-        throw new NotImplementedException();
+        await context.Projects.AddAsync(model);
+        return model;
     }
 }

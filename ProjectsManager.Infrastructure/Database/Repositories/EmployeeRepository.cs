@@ -54,8 +54,9 @@ public class EmployeeRepository: IEmployeeRepository
         await context.DisposeAsync();
     }
 
-    public Task<Employee> Create(Employee model)
+    public async Task<Employee> Create(Employee model)
     {
-        throw new NotImplementedException();
+        await context.Employees.AddAsync(model);
+        return model;
     }
 }

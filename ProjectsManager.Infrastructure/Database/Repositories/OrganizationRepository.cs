@@ -35,16 +35,16 @@ public class OrganizationRepository : IOrganizationRepository
         await context.Organizations.AddAsync(model);
     }
 
-    public async Task<Organization> Remove(Organization model)
+    public async Task<Organization> Remove(OrganizationId id)
     {
-        var modelInDb = await context.Organizations.FirstOrDefaultAsync(x => x.Id == model.Id);
+        var modelInDb = await context.Organizations.FirstOrDefaultAsync(x => x.Id == id);
 
         if (modelInDb is not null)
         {
             context.Organizations.Remove(modelInDb);
         }
 
-        return model;
+        return modelInDb;
     }
 
     public async Task Save()

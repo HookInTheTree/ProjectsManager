@@ -39,16 +39,16 @@ namespace ProjectsManager.Infrastructure.Database.Repositories
             await context.WorkItems.AddAsync(model);
         }
 
-        public async Task<WorkItem> Remove(WorkItem model)
+        public async Task<WorkItem> Remove(WorkItemId id)
         {
-            var modelInDb = await context.WorkItems.FirstOrDefaultAsync(x => x.Id == model.Id);
+            var modelInDb = await context.WorkItems.FirstOrDefaultAsync(x => x.Id == id);
 
             if (modelInDb is not null)
             {
                 context.WorkItems.Remove(modelInDb);
             }
 
-            return model;
+            return modelInDb;
         }
 
         public async Task Save()

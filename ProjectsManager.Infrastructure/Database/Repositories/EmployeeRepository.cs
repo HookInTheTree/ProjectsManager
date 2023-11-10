@@ -33,16 +33,16 @@ public class EmployeeRepository: IEmployeeRepository
         await context.Employees.AddAsync(model);
     }
 
-    public async Task<Employee> Remove(Employee model)
+    public async Task<Employee> Remove(EmployeeId id)
     {
-        var modelInDb = await context.Employees.FirstOrDefaultAsync(x => x.Id == model.Id);
+        var modelInDb = await context.Employees.FirstOrDefaultAsync(x => x.Id == id);
 
         if (modelInDb is not null)
         {
             context.Employees.Remove(modelInDb);
         }
 
-        return model;
+        return modelInDb;
     }
 
     public async Task Save()

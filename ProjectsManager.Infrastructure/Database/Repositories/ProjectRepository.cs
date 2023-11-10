@@ -35,16 +35,16 @@ public class ProjectRepository : IProjectRepository
         await context.Projects.AddAsync(model);
     }
 
-    public async Task<Project> Remove(Project model)
+    public async Task<Project> Remove(ProjectId id)
     {
-        var modelInDb = await context.Projects.FirstOrDefaultAsync(x => x.Id == model.Id);
+        var modelInDb = await context.Projects.FirstOrDefaultAsync(x => x.Id == id);
 
         if (modelInDb is not null)
         {
             context.Projects.Remove(modelInDb);
         }
 
-        return model;
+        return modelInDb;
     }
 
     public async Task Save()

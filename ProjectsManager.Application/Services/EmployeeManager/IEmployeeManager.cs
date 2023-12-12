@@ -18,12 +18,12 @@ namespace ProjectsManager.Application.Services.EmployeeManager
         EmployeeDTO UpdateEmployee(EmployeeUpdateRequest organization);
         EmployeeId DestroyEmployee(EmployeeId id);
         EmployeeDTO GetEmployee(EmployeeId id);
-        List<EmployeeDTO> GetEmployees();
+        Task<List<EmployeeDTO>> GetEmployees(OrganizationId organizationId);
         EmployeeId AddEmployeeToOrganization(EmployeeId employeeId, OrganizationId organizationId);
         EmployeeId RemoveEmployeeFromOrganization(EmployeeId employeeId, OrganizationId organizationId);
         EmployeeId AddEmployeeToProject(EmployeeId employeeId, OrganizationId organizationId);
         EmployeeId RemoveEmployeeFromProject(EmployeeId employeeId, OrganizationId organizationId);
         EmployeeId AddWorkItemToEmployee(EmployeeId employeeId, WorkItemId workItemId);
-        EmployeeId RemoveWorkItemFromEmployee(EmployeeId, WorkItemId workItemId);
+        EmployeeId RemoveWorkItemFromEmployee(EmployeeId employeeId, WorkItemId workItemId);
     }
 }

@@ -5,7 +5,6 @@ using ProjectsManager.Domain.Aggregates.Employee;
 using ProjectsManager.Domain.Aggregates.Organization;
 using ProjectsManager.Domain.Aggregates.Project;
 using ProjectsManager.Domain.Aggregates.WorkItem;
-using ProjectsManager.Infrastructure.Database.Configurations;
 using ProjectsManager.Infrastructure.Identity;
 
 namespace ProjectsManager.Infrastructure.Database

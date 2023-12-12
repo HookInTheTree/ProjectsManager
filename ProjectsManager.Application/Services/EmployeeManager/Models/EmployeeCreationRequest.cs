@@ -1,6 +1,6 @@
 ﻿namespace ProjectsManager.Application.Services.EmployeeManager.Models
 {
-    internal class EmployeeCreationRequest
+    public class EmployeeCreationRequest
     {
     }
 }

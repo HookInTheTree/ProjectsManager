@@ -2,9 +2,8 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProjectsManager.Domain.Aggregates.Organization;
 using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
-using ProjectsManager.Domain.EmployeeAggregate;
 
-namespace ProjectsManager.Infrastructure.Database.Configurations
+namespace ProjectsManager.Infrastructure.Database.Organizations
 {
     internal class OrganizationConfig : IEntityTypeConfiguration<Organization>
     {
@@ -74,7 +73,7 @@ namespace ProjectsManager.Infrastructure.Database.Configurations
                 .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
 
-       
+
     }
 
 }

@@ -5,14 +5,14 @@ using ProjectsManager.Domain.Aggregates.Project.ValueObjects;
 using ProjectsManager.Domain.Aggregates.WorkItem;
 using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
 
-namespace ProjectsManager.Infrastructure.Database.Configurations
+namespace ProjectsManager.Infrastructure.Database.WorkItems
 {
     internal class WorkItemConfig : IEntityTypeConfiguration<WorkItem>
     {
         public void Configure(EntityTypeBuilder<WorkItem> builder)
         {
             builder.ToTable("WorkItems");
-            
+
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)

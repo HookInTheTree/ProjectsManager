@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectsManager.Domain;
 using ProjectsManager.Domain.Aggregates.Project;
 using ProjectsManager.Domain.Aggregates.Project.ValueObjects;
 
-namespace ProjectsManager.Infrastructure.Database.Repositories;
+namespace ProjectsManager.Infrastructure.Database.Projects;
 
 public class ProjectRepository : IProjectRepository
 {
@@ -27,7 +26,7 @@ public class ProjectRepository : IProjectRepository
     public Task<Project> Update(Project model)
     {
         context.Projects.Update(model);
-        return Task.FromResult<Project>(model);
+        return Task.FromResult(model);
     }
 
     public async Task Insert(Project model)
@@ -62,7 +61,7 @@ public class ProjectRepository : IProjectRepository
         await context.Projects.AddAsync(model);
         return model;
     }
-    
+
     public async Task<Project> GetById(ProjectId id)
     {
         return await context.Projects.FirstAsync(x => x.Id == id);

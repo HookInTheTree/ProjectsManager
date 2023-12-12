@@ -1,6 +1,6 @@
-﻿namespace ProjectsManager.Domain.Common;
+﻿namespace ProjectsManager.Infrastructure.Database.Common;
 
-public interface IRepository<T, TID>:IAsyncDisposable
+public interface IRepository<T, TID> : IAsyncDisposable
 {
     Task<List<T>> GetAll();
     Task<T> GetById(TID id);

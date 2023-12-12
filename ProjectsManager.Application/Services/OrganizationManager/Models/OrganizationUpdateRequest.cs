@@ -2,15 +2,14 @@
 {
     public class OrganizationUpdateRequest
     {
-        public Guid Id { get; internal set; }
-        public string Name { get; internal set; }
-        public string PostalCode { get; internal set; }
-        public string State { get; internal set; }
-        public string City { get; internal set; }
-        public string Street { get; internal set; }
-        public string Building { get; internal set; }
-        public string PhoneNumber { get; internal set; }
-        public string Email { get; internal set; }
-        public string Website { get; internal set; }
+        public string Name { get; set; }
+        public string PostalCode { get; set; }
+        public string State { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string Building { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Website { get; set; }
     }
 }

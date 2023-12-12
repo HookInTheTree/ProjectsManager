@@ -1,6 +1,6 @@
-﻿namespace ProjectsManager.Application.Services.OrganizationManager.Models
+﻿namespace ProjectsManager.Controllers
 {
-    public class OrganizationCreationRequest
+    public class OrganizationCreationModel
     {
         public string Name { get; set; }
         public string PostalCode { get; set; }

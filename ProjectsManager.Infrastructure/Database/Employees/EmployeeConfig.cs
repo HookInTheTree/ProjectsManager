@@ -4,7 +4,7 @@ using ProjectsManager.Domain.Aggregates.Employee;
 using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
 using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 
-namespace ProjectsManager.Infrastructure.Database.Configurations
+namespace ProjectsManager.Infrastructure.Database.Employees
 {
     public class EmployeeConfig : IEntityTypeConfiguration<Employee>
     {
@@ -28,7 +28,7 @@ namespace ProjectsManager.Infrastructure.Database.Configurations
 
             builder.OwnsOne(x => x.FullName);
             builder.OwnsOne(x => x.PassportInfo);
-            
+
             builder.Property(m => m.OrganizationId)
                 .ValueGeneratedNever()
                 .HasConversion(
@@ -53,7 +53,7 @@ namespace ProjectsManager.Infrastructure.Database.Configurations
             builder.Metadata.FindNavigation(nameof(Employee.ProjectIds))
                 .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
-        
+
         private void ConfigureEmployeesWorkItemIdsTable(EntityTypeBuilder<Employee> builder)
         {
             builder.OwnsMany(x => x.WorkItemIds, pb =>

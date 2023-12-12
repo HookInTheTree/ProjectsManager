@@ -4,6 +4,7 @@ using ProjectsManager.Domain.Aggregates.Organization;
 using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 using ProjectsManager.Domain.Aggregates.Project;
 using ProjectsManager.Domain.Common.ValueObjects;
+using ProjectsManager.Infrastructure.Database.Organizations;
 
 namespace ProjectsManager.Application.Services.OrganizationManager
 {
@@ -49,14 +50,15 @@ namespace ProjectsManager.Application.Services.OrganizationManager
             return OrganizationDTO.FromOrganization(organization);
         }
 
-        public async Task<OrganizationDTO> UpdateOrganization(OrganizationUpdateRequest request)
+        public async Task<OrganizationDTO> UpdateOrganization(OrganizationId id, OrganizationUpdateRequest request)
         {
-            var organization = new Organization(
-                OrganizationId.Create(request.Id),
-                new Name(request.Name),
-                new JuridicalAddress(request.PostalCode, request.State, request.City, request.Street, request.Building),
-                new ContactInfo(request.Website, request.Email, request.PhoneNumber)
-            );
+            var organization = await _repository.GetById(id);
+
+            var newContactInfo = new ContactInfo(request.Website, request.Email, request.PhoneNumber);
+            organization.ChangeContactInfo(newContactInfo);
+
+            var newAddress = new JuridicalAddress(request.PostalCode, request.State, request.City, request.Street, request.Building);
+            organization.ChangeJuridicalAddress(newAddress);
 
             await _repository.Update(organization);
             await _repository.Save();
@@ -64,13 +66,12 @@ namespace ProjectsManager.Application.Services.OrganizationManager
             return OrganizationDTO.FromOrganization(organization);
         }
 
-        public async Task<OrganizationId> DestroyOrganization(OrganizationId organizationId)
+        public async Task<OrganizationDTO> DestroyOrganization(OrganizationId organizationId)
         {
             var removedEntity = await _repository.Remove(organizationId);
             await _repository.Save();
-            return OrganizationId.Create(removedEntity.Id.Value);
+            return OrganizationDTO.FromOrganization(removedEntity);
         }
-
 
         public OrganizationId CreateOrganizationProject(OrganizationId organizationId, Project project)
         {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.Aggregates.WorkItem;
 using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
 
-namespace ProjectsManager.Infrastructure.Database.Repositories
+namespace ProjectsManager.Infrastructure.Database.WorkItems
 {
     public class WorkItemRepository : IWorkItemRepository
     {
@@ -17,7 +12,7 @@ namespace ProjectsManager.Infrastructure.Database.Repositories
         {
             context = _context;
         }
-        
+
         public async Task<List<WorkItem>> GetAll()
         {
             return await context.WorkItems.ToListAsync();
@@ -31,7 +26,7 @@ namespace ProjectsManager.Infrastructure.Database.Repositories
         public Task<WorkItem> Update(WorkItem model)
         {
             context.WorkItems.Update(model);
-            return Task.FromResult<WorkItem>(model);
+            return Task.FromResult(model);
         }
 
         public async Task Insert(WorkItem model)

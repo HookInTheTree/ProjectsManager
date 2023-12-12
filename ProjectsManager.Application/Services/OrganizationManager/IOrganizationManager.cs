@@ -15,8 +15,8 @@ namespace ProjectsManager.Application.Services.OrganizationManager
     public interface IOrganizationManager
     {
         Task<OrganizationDTO> CreateOrganization(OrganizationCreationRequest request);
-        Task<OrganizationDTO> UpdateOrganization(OrganizationUpdateRequest request);
-        Task<OrganizationId> DestroyOrganization(OrganizationId organizationId);
+        Task<OrganizationDTO> UpdateOrganization(OrganizationId id, OrganizationUpdateRequest request);
+        Task<OrganizationDTO> DestroyOrganization(OrganizationId organizationId);
         Task <OrganizationDTO> GetOrganization(OrganizationId organizationId);
         Task<List<OrganizationDTO>> GetOrganizations();
         OrganizationId AddEmployeeToOrganization(OrganizationId organizationId, Employee employee);

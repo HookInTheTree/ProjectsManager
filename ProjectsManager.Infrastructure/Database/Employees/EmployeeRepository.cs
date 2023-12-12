@@ -2,16 +2,16 @@
 using ProjectsManager.Domain.Aggregates.Employee;
 using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
 
-namespace ProjectsManager.Infrastructure.Database.Repositories;
+namespace ProjectsManager.Infrastructure.Database.Employees;
 
-public class EmployeeRepository: IEmployeeRepository
+public class EmployeeRepository : IEmployeeRepository
 {
     private readonly AppDbContext context;
     public EmployeeRepository(AppDbContext _context)
     {
         context = _context;
     }
-    
+
     public async Task<List<Employee>> GetAll()
     {
         return await context.Employees.ToListAsync();
@@ -63,6 +63,6 @@ public class EmployeeRepository: IEmployeeRepository
 
     public async Task<Employee> GetById(EmployeeId id)
     {
-       return await context.Employees.FirstAsync(x => x.Id == id);
+        return await context.Employees.FirstAsync(x => x.Id == id);
     }
 }

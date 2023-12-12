@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectsManager.Domain.Aggregates.Employee;
-using ProjectsManager.Domain.Aggregates.Organization;
-using ProjectsManager.Domain.Aggregates.Project;
-using ProjectsManager.Domain.Aggregates.WorkItem;
 using ProjectsManager.Infrastructure.Database;
-using ProjectsManager.Infrastructure.Database.Repositories;
+using ProjectsManager.Infrastructure.Database.Employees;
+using ProjectsManager.Infrastructure.Database.Organizations;
+using ProjectsManager.Infrastructure.Database.Projects;
+using ProjectsManager.Infrastructure.Database.WorkItems;
 using ProjectsManager.Infrastructure.Identity;
 
 namespace ProjectsManager.Infrastructure;

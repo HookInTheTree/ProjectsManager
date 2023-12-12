@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjectsManager.Domain.Aggregates.Organization;
 using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 
-namespace ProjectsManager.Infrastructure.Database.Repositories;
+namespace ProjectsManager.Infrastructure.Database.Organizations;
 
 public class OrganizationRepository : IOrganizationRepository
 {
@@ -27,7 +27,7 @@ public class OrganizationRepository : IOrganizationRepository
     public Task<Organization> Update(Organization model)
     {
         context.Organizations.Update(model);
-        return Task.FromResult<Organization>(model);
+        return Task.FromResult(model);
     }
 
     public async Task Insert(Organization model)

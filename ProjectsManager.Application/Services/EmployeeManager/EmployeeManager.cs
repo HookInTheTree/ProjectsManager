@@ -3,6 +3,7 @@ using ProjectsManager.Domain.Aggregates.Employee;
 using ProjectsManager.Domain.Aggregates.Employee.ValueObjects;
 using ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 using ProjectsManager.Domain.Aggregates.WorkItem.ValueObjects;
+using ProjectsManager.Infrastructure.Database.Employees;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace ProjectsManager.Application.Services.EmployeeManager
 {
     public class EmployeeManager : IEmployeeManager
     {
+        private readonly IEmployeeRepository employeeRepository;
+        public EmployeeManager(IEmployeeRepository _employeeRepository)
+        {
+            employeeRepository = _employeeRepository;
+        }
+
         public EmployeeId AddEmployeeToOrganization(EmployeeId employeeId, OrganizationId organizationId)
         {
             throw new NotImplementedException();
@@ -43,9 +50,12 @@ namespace ProjectsManager.Application.Services.EmployeeManager
             throw new NotImplementedException();
         }
 
-        public List<EmployeeDTO> GetEmployees()
+        public async Task<List<EmployeeDTO>> GetEmployees(OrganizationId organizationId)
         {
-            throw new NotImplementedException();
+            var employees = await employeeRepository.GetAll();
+            return employees.Where(x => x.OrganizationId == organizationId)
+                .Select(x => EmployeeDTO.FromDomainModel(x)).
+                ToList();
         }
 
         public EmployeeId RemoveEmployeeFromOrganization(EmployeeId employeeId, OrganizationId organizationId)
@@ -58,7 +68,7 @@ namespace ProjectsManager.Application.Services.EmployeeManager
             throw new NotImplementedException();
         }
 
-        public EmployeeId RemoveWorkItemFromEmployee(EmployeeId , WorkItemId workItemId)
+        public EmployeeId RemoveWorkItemFromEmployee(EmployeeId employeeId, WorkItemId workItemId)
         {
             throw new NotImplementedException();
         }

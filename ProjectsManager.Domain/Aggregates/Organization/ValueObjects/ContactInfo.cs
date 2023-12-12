@@ -1,5 +1,4 @@
 ﻿using ProjectsManager.Domain.Common;
-using ProjectsManager.Domain.OrganizationAggregate.ValueObjects;
 
 namespace ProjectsManager.Domain.Aggregates.Organization.ValueObjects;
 
